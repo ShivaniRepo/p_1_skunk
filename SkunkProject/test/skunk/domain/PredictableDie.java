@@ -22,6 +22,7 @@ public class PredictableDie
 	public void roll()
 	{
 		this.lastRoll = this.theRolls[ this.nextInt ];
+		this.nextInt++;
 	}
 
 	public int getLastRoll()

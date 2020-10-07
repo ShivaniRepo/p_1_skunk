@@ -13,6 +13,10 @@ public class TestPredictableDie
 		PredictableDie die = new PredictableDie( new int[] {1,2,3});
 		die.roll();
 		assertEquals(1, die.getLastRoll());
+		
+		die.roll();
+		assertEquals(2, die.getLastRoll());
+		
 	}
 
 }
