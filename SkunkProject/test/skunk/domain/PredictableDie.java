@@ -2,9 +2,9 @@ package skunk.domain;
 
 public class PredictableDie
 {
-	private int[] theRolls;
-	private int nextInt; //index
-	private int lastRoll;
+	private int[] theRolls; //Array
+	private int nextInt; //index pointer for next element
+	private int lastRoll; //keeps track
 	
 	//default constructor
 	public PredictableDie()
@@ -15,6 +15,11 @@ public class PredictableDie
 	//Constructor
 	public PredictableDie(int[] is)
 	{
+		if( is.length == 0 )
+		{
+			throw new RuntimeException();
+		}
+		
 		this.theRolls = is;
 		this.nextInt = 0;		
 	}
