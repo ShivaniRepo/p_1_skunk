@@ -22,7 +22,15 @@ public class PredictableDie
 	public void roll()
 	{
 		this.lastRoll = this.theRolls[ this.nextInt ];
+		
+		//increment
 		this.nextInt++;
+		
+		//Wrap around if index value is greater than the length of the array.
+		if( this.nextInt == this.theRolls.length )
+		{
+			this.nextInt = 0;
+		}
 	}
 
 	public int getLastRoll()
