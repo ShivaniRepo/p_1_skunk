@@ -56,6 +56,12 @@ public class TestPredictableDie
 		
 		die.roll();
 		assertEquals(6, die.getLastRoll());
-		
 	}
+	
+	@Test public void test_PD_Addition_of_2_Dice()
+	{
+		fail();
+	}
+	
+	
 }
