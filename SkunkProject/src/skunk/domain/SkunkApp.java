@@ -11,8 +11,12 @@ public class SkunkApp
 		StdOut.println("-----------------------------------------------------------");
 		
 		
+		Dice dice = new Dice();
+		StdOut.println("created Dice");
+		dice.roll();
+		StdOut.println("Dice roll");
 		
-		
+		StdOut.println(dice.toString());
 	}
 
 }
