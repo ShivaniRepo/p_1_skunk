@@ -42,4 +42,12 @@ public class TestPredictableDie
 		PredictableDie die = new PredictableDie( new int[] {});
 		die.roll();
 	}
+	
+	@Test
+	public void test_SkunkApp_welcome_message()
+	{
+		fail();
+	}
+	
+		
 }
