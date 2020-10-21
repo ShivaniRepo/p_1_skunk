@@ -60,4 +60,10 @@ public class TestPredictableDie
 		die.roll();
 		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
 	}
+	
+	@Test
+	public void test_PD_Check_for_Skunk_and_Deuce()
+	{
+		fail();
+	}
 }
