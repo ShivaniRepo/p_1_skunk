@@ -7,6 +7,8 @@ import org.junit.Test;
 public class TestPredictableDie
 {
 
+	private static final int CONSTANT_DEUCE = 2;
+
 	@Test
 	public void test_PD_1_2_3()
 	{
@@ -52,9 +54,9 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Check_for_Deuce()
 	{
-		PredictableDie die = new PredictableDie( new int[] {2});
+		PredictableDie die = new PredictableDie( new int[] {CONSTANT_DEUCE});
 	
 		die.roll();
-		assertEquals(2, die.getLastRoll());
+		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
 	}
 }
