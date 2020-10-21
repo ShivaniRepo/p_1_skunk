@@ -55,6 +55,6 @@ public class TestPredictableDie
 		PredictableDie die = new PredictableDie( new int[] {2});
 	
 		die.roll();
-		assertEquals(1, die.getLastRoll());
+		assertEquals(2, die.getLastRoll());
 	}
 }
