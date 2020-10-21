@@ -49,5 +49,9 @@ public class TestPredictableDie
 		SkunkApp skunk = new SkunkApp();
 	}
 	
-		
+	@Test
+	public void test_PD_Check_for_Deuce()
+	{
+		fail();
+	}
 }
