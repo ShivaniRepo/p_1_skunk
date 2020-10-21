@@ -67,7 +67,7 @@ public class TestPredictableDie
 		die.roll();
 		int die2 = die.getLastRoll();
 		int sum = Integer.sum(die1, die2);
-		assertEquals(sum, 3);
+		assertEquals(sum, 4);
 	}
 	
 }
