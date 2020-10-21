@@ -7,6 +7,7 @@ import org.junit.Test;
 public class TestPredictableDie
 {
 
+	private static final int CONSTANT_SKUNK_DEUCE_TOTAL = 3;
 	private static final int CONSTANT_SKUNK = 1;
 	private static final int CONSTANT_DEUCE = 2;
 
@@ -76,6 +77,6 @@ public class TestPredictableDie
 		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
 		iTotal += die.getLastRoll();
 		
-		assertEquals( 3, iTotal );
+		assertEquals( CONSTANT_SKUNK_DEUCE_TOTAL, iTotal );
 	}
 }
