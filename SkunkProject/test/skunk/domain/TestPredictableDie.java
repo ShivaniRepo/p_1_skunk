@@ -47,11 +47,13 @@ public class TestPredictableDie
 		die.roll();
 	}
 	
+	
 	@Test
 	public void test_SkunkApp_welcome_message()
 	{
 		SkunkApp skunk = new SkunkApp();
 	}
+	
 	
 	@Test
 	public void test_PD_Check_for_Deuce()
@@ -61,6 +63,7 @@ public class TestPredictableDie
 		die.roll();
 		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
 	}
+	
 	
 	@Test
 	public void test_PD_Check_for_Skunk_and_Deuce()
