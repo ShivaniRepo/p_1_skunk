@@ -76,6 +76,6 @@ public class TestPredictableDie
 		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
 		iTotal += die.getLastRoll();
 		
-		assertEquals( 2, iTotal );
+		assertEquals( 3, iTotal );
 	}
 }
