@@ -7,6 +7,7 @@ import org.junit.Test;
 public class TestPredictableDie
 {
 
+	private static final int CONSTANT_SKUNK = 1;
 	private static final int CONSTANT_DEUCE = 2;
 
 	@Test
@@ -28,13 +29,13 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_1_more_than_once()
 	{
-		PredictableDie die = new PredictableDie( new int[] {1});
+		PredictableDie die = new PredictableDie( new int[] {CONSTANT_SKUNK});
 		
 		die.roll();
-		assertEquals(1, die.getLastRoll());
+		assertEquals(CONSTANT_SKUNK, die.getLastRoll());
 		
 		die.roll();
-		assertEquals(1, die.getLastRoll());
+		assertEquals(CONSTANT_SKUNK, die.getLastRoll());
 	}
 
 	
