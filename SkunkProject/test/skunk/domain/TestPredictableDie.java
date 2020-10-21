@@ -60,7 +60,7 @@ public class TestPredictableDie
 	
 	@Test public void test_PD_Addition_of_2_Dice()
 	{
-		PredictableDie die = new PredictableDie( new int[] {1, 2});
+		PredictableDie die = new PredictableDie( new int[] {1, 3});
 
 		die.roll();
 		int die1 = die.getLastRoll();
