@@ -46,7 +46,7 @@ public class TestPredictableDie
 	@Test
 	public void test_SkunkApp_welcome_message()
 	{
-		fail();
+		SkunkApp skunk = new SkunkApp();
 	}
 	
 		
