@@ -46,13 +46,16 @@ public class TestPredictableDie
 	
 	@Test public void test_PD_4_5_6()
 	{
-		PredictableDie die = new PredictableDie( new int[] {4, 5});
+		PredictableDie die = new PredictableDie( new int[] {4, 5, 6});
 		
 		die.roll();
 		assertEquals(4, die.getLastRoll());
 		
 		die.roll();
-		assertEquals(4, die.getLastRoll());
+		assertEquals(5, die.getLastRoll());
+		
+		die.roll();
+		assertEquals(6, die.getLastRoll());
 		
 	}
 }
