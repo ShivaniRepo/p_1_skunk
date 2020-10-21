@@ -64,6 +64,18 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Check_for_Skunk_and_Deuce()
 	{
-		fail();
+		int iTotal = 0;
+		
+		PredictableDie die = new PredictableDie( new int[] {CONSTANT_SKUNK,CONSTANT_DEUCE});
+		
+		die.roll();
+		assertEquals(CONSTANT_SKUNK, die.getLastRoll());
+		iTotal = die.getLastRoll();
+		
+		die.roll();
+		assertEquals(CONSTANT_DEUCE, die.getLastRoll());
+		iTotal += die.getLastRoll();
+		
+		assertEquals( 2, iTotal );
 	}
 }
