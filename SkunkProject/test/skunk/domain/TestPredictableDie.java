@@ -60,7 +60,14 @@ public class TestPredictableDie
 	
 	@Test public void test_PD_Addition_of_2_Dice()
 	{
-		fail();
+		PredictableDie die = new PredictableDie( new int[] {1, 2});
+
+		die.roll();
+		int die1 = die.getLastRoll();
+		die.roll();
+		int die2 = die.getLastRoll();
+		int sum = Integer.sum(die1, die2);
+		assertEquals(sum, 2);
 	}
 	
 	
