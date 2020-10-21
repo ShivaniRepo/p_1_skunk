@@ -52,6 +52,9 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Check_for_Deuce()
 	{
-		fail();
+		PredictableDie die = new PredictableDie( new int[] {2});
+	
+		die.roll();
+		assertEquals(1, die.getLastRoll());
 	}
 }
