@@ -42,4 +42,10 @@ public class TestPredictableDie
 		PredictableDie die = new PredictableDie( new int[] {});
 		die.roll();
 	}
+	
+	
+	@Test public void test_PD_4_5_6()
+	{
+		fail();
+	}
 }
