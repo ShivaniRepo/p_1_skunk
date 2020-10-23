@@ -48,6 +48,34 @@ public class TestPredictableDie
 	}
 	
 	
+
+	@Test public void test_PD_4_5_6()
+	{
+		PredictableDie die = new PredictableDie( new int[] {4, 5, 6});
+		
+		die.roll();
+		assertEquals(4, die.getLastRoll());
+		
+		die.roll();
+		assertEquals(5, die.getLastRoll());
+		
+		die.roll();
+		assertEquals(6, die.getLastRoll());
+	}
+	
+	@Test public void test_PD_Addition_of_2_Dice()
+	{
+		PredictableDie die = new PredictableDie( new int[] {1, 3});
+
+		die.roll();
+		int die1 = die.getLastRoll();
+		die.roll();
+		int die2 = die.getLastRoll();
+		int sum = Integer.sum(die1, die2);
+		assertEquals(sum, 4);
+	}
+	
+
 	@Test
 	public void test_SkunkApp_welcome_message()
 	{
@@ -82,4 +110,5 @@ public class TestPredictableDie
 		
 		assertEquals( CONSTANT_SKUNK_DEUCE_TOTAL, iTotal );
 	}
+
 }
