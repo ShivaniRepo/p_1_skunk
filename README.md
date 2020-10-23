@@ -2,6 +2,6 @@
 SEIS635 Project1 SkunkProject
 
 # P1 by
-Shivani Jawda-Gupta
+Shivani
 Quan Nguyen
 Ayan Osman
