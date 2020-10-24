@@ -110,7 +110,7 @@ public class TestPredictableDie
 	public void test_PD_Check_for_Skunk()
 	{
 		
-		PredictableDie die = new PredictableDie (new int[] {1,2});
+		PredictableDie die = new PredictableDie (new int[] {CONSTANT_SKUNK,2});
 		
 		die.roll();
 		int firstroll = die.getLastRoll();
