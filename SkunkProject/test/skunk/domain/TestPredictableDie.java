@@ -106,6 +106,12 @@ public class TestPredictableDie
 		
 	}
 	
+	@Test
+	public void test_PD_Check_for_Skunk()
+	{
+		fail();
+	}
+	
 	
 
 }
