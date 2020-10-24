@@ -121,6 +121,5 @@ public class TestPredictableDie
 		assertTrue(firstroll == 1 || secondroll == 1);
 	}
 	
-	
 
 }
