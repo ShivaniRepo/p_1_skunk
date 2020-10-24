@@ -88,15 +88,19 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Addition_Not_Greater_than_12()
 	{
-		PredictableDie die = new PredictableDie( new int[] {7,6});
+		int firstroll = 0;
+		int secondroll= 0;
+		int result = 0;
+		
+		Die die = new Die();
 		
 		die.roll();
-		int firstroll = die.getLastRoll();
+		firstroll = die.getLastRoll();
 		
 		die.roll();
-		int secondroll = die.getLastRoll();
+		secondroll = die.getLastRoll();
 		
-		int result = firstroll + secondroll;
+		result = firstroll + secondroll;
 		
 		assert(result <=12);
 		
