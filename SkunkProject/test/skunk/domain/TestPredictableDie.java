@@ -133,7 +133,15 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Check_for_Skunk()
 	{
-		fail("Not yet implemented");
+		PredictableDie die = new PredictableDie (new int[] {1,2});
+		
+		die.roll();
+		int firstroll = die.getLastRoll();
+		
+		die.roll();
+		int secondroll = die.getLastRoll();
+		
+		assertTrue(firstroll == 1 || secondroll == 1);
 	}
 
 
