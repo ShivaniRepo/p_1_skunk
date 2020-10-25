@@ -128,7 +128,13 @@ public class TestPredictableDie
 		
 		assertTrue(result <= 12);
 		
-		
 	}
+	
+	@Test
+	public void test_PD_Check_for_Skunk()
+	{
+		fail("Not yet implemented");
+	}
+
 
 }
