@@ -8,9 +8,12 @@ public class TestDie
 {
 
 	@Test
-	public void test()
+	public void test_Roll_Value()
 	{
 		fail();
+		Die die = new Die();
+		die.roll();
+        assertTrue(die.getLastRoll() >= 1 && die.getLastRoll() <= 6);
 	}
 
 }
