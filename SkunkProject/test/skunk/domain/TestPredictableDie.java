@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class TestPredictableDie
 {
 
@@ -75,13 +77,6 @@ public class TestPredictableDie
 		assertEquals(sum, 4);
 	}
 	
-
-	@Test
-	public void test_SkunkApp_welcome_message()
-	{
-		SkunkApp skunk = new SkunkApp();
-	}
-	
 	
 	@Test
 	public void test_PD_Check_for_Deuce()
@@ -111,4 +106,35 @@ public class TestPredictableDie
 		assertEquals( CONSTANT_SKUNK_DEUCE_TOTAL, iTotal );
 	}
 
+	
+	@Test
+	public void test_PD_Addition_Not_Greater_than_12()
+	{
+		int firstroll = 0;
+		int secondroll= 0;
+		int result = 0;
+		
+		Die die = new Die();
+		
+		die.roll();
+		firstroll = die.getLastRoll();
+		
+		die.roll();
+		secondroll = die.getLastRoll();
+		
+		result = firstroll + secondroll;
+		
+		assert(result <=12);
+		
+	}
+	
+	@Test
+	public void test_PD_Check_for_Skunk()
+	{
+		PredictableDie die = new PredictableDie (new int[] {CONSTANT_SKUNK});
+		
+		die.roll();
+		assertEquals(CONSTANT_SKUNK, die.getLastRoll());
+	}
+	
 }

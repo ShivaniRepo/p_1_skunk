@@ -14,5 +14,5 @@ public class TestDie
 		die.roll();
         assertTrue(die.getLastRoll() >= 1 && die.getLastRoll() <= 6);
 	}
-
+	
 }
