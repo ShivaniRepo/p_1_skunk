@@ -7,6 +7,7 @@ import org.junit.Test;
 public class TestPredictableDie
 {
 
+	private static final int CONSTANT_TO_TEST_SKUNKAPP = 111;
 	private static final int CONSTANT_SKUNK_DEUCE_TOTAL = 3;
 	private static final int CONSTANT_SKUNK = 1;
 	private static final int CONSTANT_DEUCE = 2;
@@ -77,9 +78,10 @@ public class TestPredictableDie
 	
 
 	@Test
-	public void test_SkunkApp_welcome_message()
+	public void test_SkunkApp_class_object_create()
 	{
 		SkunkApp skunk = new SkunkApp();
+		assertEquals( CONSTANT_TO_TEST_SKUNKAPP, skunk.testSkunkAppClass());
 	}
 	
 	
