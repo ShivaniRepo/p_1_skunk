@@ -132,7 +132,7 @@ public class TestPredictableDie
 	@Test
 	public void test_PD_Check_for_Skunk()
 	{
-		PredictableDie die = new PredictableDie (new int[] {CONSTANT_SKUNK,2});
+		PredictableDie die = new PredictableDie (new int[] {CONSTANT_SKUNK});
 
 		die.roll();
 
