@@ -1,3 +1,4 @@
+//Just a comment.
 package skunk.domain;
 
 import static org.junit.Assert.*;
