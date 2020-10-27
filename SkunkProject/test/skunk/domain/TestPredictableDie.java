@@ -112,5 +112,31 @@ public class TestPredictableDie
 		
 		assertEquals( CONSTANT_SKUNK_DEUCE_TOTAL, iTotal );
 	}
+	
+	@Test
+	public void test_PD_Addition_Not_Greater_than_12()
+	{
+		PredictableDie die = new PredictableDie (new int[] {6,6});
+
+		die.roll();
+		int firstroll = die.getLastRoll();
+
+		die.roll();
+		int secondroll = die.getLastRoll();
+
+		int result = firstroll + secondroll;
+
+		assertTrue(result <= 12);
+	}
+	
+	@Test
+	public void test_PD_Check_for_Skunk()
+	{
+		PredictableDie die = new PredictableDie (new int[] {CONSTANT_SKUNK,2});
+
+		die.roll();
+
+		assertEquals(CONSTANT_SKUNK, die.getLastRoll());
+	}
 
 }
