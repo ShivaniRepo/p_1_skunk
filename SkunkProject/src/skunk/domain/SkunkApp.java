@@ -1,5 +1,5 @@
+// Added in comment for developer branch
 package skunk.domain;
-// Added a comment to push to master
 import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkApp
