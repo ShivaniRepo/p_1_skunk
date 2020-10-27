@@ -112,5 +112,11 @@ public class TestPredictableDie
 		
 		assertEquals( CONSTANT_SKUNK_DEUCE_TOTAL, iTotal );
 	}
+	
+	@Test
+	public void test_PD_Addition_Not_Greater_than_12()
+	{
+		fail();
+	}
 
 }
