@@ -28,7 +28,6 @@ public class TestGame {
 	@Test
 	public void test_game_object() 
 	{
-		fail();
 		Game newGame = new Game();
 	}	
 }
