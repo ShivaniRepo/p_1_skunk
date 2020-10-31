@@ -9,7 +9,8 @@ public class TestGame {
 	// Test to verify gameStatus 
 
 	@Test
-	public void test_game_status() {
+	public void test_game_status() 
+	{
 		
 		Game newGame = new Game();
 		String gameStatus;
@@ -19,5 +20,16 @@ public class TestGame {
 		
 //		gameStatus = newGame.getGameStatus();
 //		assertEquals("Skunk game has started", gameStatus);
+		
+	}
+		
+	// Test to verify Game object	
+		
+	@Test
+	public void test_game_object() 
+	{
+		fail();
+		Game newGame = new Game();
+	}	
 }
-}
+
