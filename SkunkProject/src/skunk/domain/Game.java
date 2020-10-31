@@ -2,9 +2,9 @@ package skunk.domain;
 
 public class Game {
 	
-	public boolean getGameStatus()
+	public String getGameStatus()
 	{
-		return true;
+		return "Skunk game has started";
 		
 	}
 
