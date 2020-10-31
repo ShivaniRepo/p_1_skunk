@@ -15,11 +15,9 @@ public class TestGame {
 		String gameStatus;
 		
 		gameStatus = newGame.getGameStatus();
-		assertEquals("Skunk game has started", gameStatus);
-		
-		
-		gameStatus = newGame.getGameStatus();
 		assertEquals("Skunk game has NOT started", gameStatus);
-
+		
+//		gameStatus = newGame.getGameStatus();
+//		assertEquals("Skunk game has started", gameStatus);
 }
 }
