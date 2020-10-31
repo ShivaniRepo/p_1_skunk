@@ -5,13 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestGame {
+	
+	// Test to verify gameStatus condition 
 
 	@Test
 	public void test_game_status() {
 		Game newGame = new Game();
-		String gameStatus;
+		boolean gameStatus;
 		gameStatus = newGame.getGameStatus();
-		fail();
+		assertTrue(gameStatus);
 
 }
 }
