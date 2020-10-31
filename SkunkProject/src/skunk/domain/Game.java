@@ -21,5 +21,11 @@ public class Game {
 	{
 		this.gameStarted = true;
 	}
+	
+	public int getPlayers()
+	{
+		return 0;
+		
+	}
 
 }
