@@ -11,8 +11,6 @@ public class TestSkunkController
 	@Test
 	public void test_skunk_controller_run()
 	{
-		fail();
-		
 		SkunkController skunk = new SkunkController();
 
 		boolean bStatus = skunk.run();
