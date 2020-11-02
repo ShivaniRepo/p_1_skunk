@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TestGame {
 	
-	// Test to verify game NOT started and started
+	// Test to verify Skunk game NOT started and started
 
 	@Test
 	public void test_game_status() 
@@ -26,8 +26,16 @@ public class TestGame {
 		gameStatus = newGame.getGameStatus();
 		assertEquals("Skunk game has started.", gameStatus);
 		
-		
-			
+	}
+	
+	
+	// Test to ADD Player to Skunk Game. 
+	
+	@Test
+	
+	public void test_game_add_player()
+	{
+		fail();
 	}
 		
 	// Test to verify Game object	
