@@ -45,7 +45,6 @@ public class TestGame {
 	{
 		Game newGame = new Game();
 		newGame.removePlayer("Quan");
-		fail();
 	}
 	
 		
