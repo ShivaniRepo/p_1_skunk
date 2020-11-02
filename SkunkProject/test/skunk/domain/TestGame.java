@@ -47,6 +47,14 @@ public class TestGame {
 		newGame.removePlayer("Quan");
 	}
 	
+	// Test for Total Players in Skunk Game.
+	
+	@Test
+	public void test_game_total_player()
+	{
+		fail();
+	}
+	
 		
 	// Test to verify Game object	
 		

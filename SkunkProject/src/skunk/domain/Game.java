@@ -35,6 +35,8 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	// Method to REMOVE Player from Game. 
 
 	public void removePlayer(String string) {
 		// TODO Auto-generated method stub
