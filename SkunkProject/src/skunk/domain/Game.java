@@ -8,11 +8,11 @@ public class Game {
 	{
 		if (gameStarted == true) 
 		{
-			return "Skunk game has started";
+			return "Skunk game has started.";
 		}
 		else 
 		{
-			return "Skunk game has NOT started";
+			return "Skunk game has NOT started.";
 		}
 		
 	}
@@ -22,9 +22,17 @@ public class Game {
 		this.gameStarted = true;
 	}
 	
+	
+	// Method to return total number of players. Need to follow up with Player class. 
 	public int getPlayers()
 	{
 		return 0;
+		
+	}
+
+	// Method to add Player to Game. 
+	public void addPlayer(String string) {
+		// TODO Auto-generated method stub
 		
 	}
 

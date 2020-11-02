@@ -35,7 +35,8 @@ public class TestGame {
 	
 	public void test_game_add_player()
 	{
-		fail();
+		Game newGame = new Game();
+		newGame.addPlayer("Quan");
 	}
 		
 	// Test to verify Game object	

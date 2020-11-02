@@ -6,7 +6,6 @@ import org.junit.Test;
 
 public class TestDie
 {
-
 	@Test
 	public void test_Roll_Value()
 	{
