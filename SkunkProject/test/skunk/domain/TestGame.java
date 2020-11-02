@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TestGame {
 	
-	// Test to verify gameStatus 
+	// Test to verify game NOT started/
 
 	@Test
 	public void test_game_status() 
@@ -16,11 +16,11 @@ public class TestGame {
 		String gameStatus;
 		
 		gameStatus = newGame.getGameStatus();
-		assertEquals("Skunk game has NOT started", gameStatus);
+		assertEquals("Skunk game has NOT started.", gameStatus);
 		
-//		gameStatus = newGame.getGameStatus();
-//		assertEquals("Skunk game has started", gameStatus);
-		
+		// Test to verify game started.
+		fail();
+			
 	}
 		
 	// Test to verify Game object	
