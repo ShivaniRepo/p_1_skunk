@@ -8,22 +8,23 @@ import edu.princeton.cs.introcs.StdOut;
 public class SkunkApp
 {
 	private static final int CONSTANT_TO_TEST_RETURN = 111;
+	
 	public SkunkController skunkController;
+	public static SkunkUI ui;
 	
 	//**********************************************************
 	
 	public SkunkApp()
 	{
-		skunkController = new SkunkController();
-		//skunkController.run();
+
 	}
 	
 	//**********************************************************
 	
 	public static void main(String[] args)
 	{
-		StdOut.println("***** Welcome to the Skunk game created by Seagators *****");
-		StdOut.println("-----------------------------------------------------------");
+		ui = new SkunkUI();
+		ui.welcomeString();
 		
 		Dice dice = new Dice();
 		StdOut.println("created Dice");
