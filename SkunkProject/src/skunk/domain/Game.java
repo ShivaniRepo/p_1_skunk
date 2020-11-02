@@ -40,11 +40,17 @@ public class Game {
 
 	public void removePlayer(String string) {
 		// TODO Auto-generated method stub
+		// Need method from Player class to remove player. 
 		
 	}
+	
+	// Method to get Total Player count for Game
 
-	public void getTotalPlayers() {
+	public int getTotalPlayers() {
 		// TODO Auto-generated method stub
+		// Need method from Player class for total. 
+		// return TotalPlayers
+		return 0;
 		
 	}
 
