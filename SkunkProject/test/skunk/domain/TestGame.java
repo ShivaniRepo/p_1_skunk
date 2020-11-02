@@ -52,7 +52,8 @@ public class TestGame {
 	@Test
 	public void test_game_total_player()
 	{
-		fail();
+		Game newGame = new Game();
+		newGame.getTotalPlayers();
 	}
 	
 		

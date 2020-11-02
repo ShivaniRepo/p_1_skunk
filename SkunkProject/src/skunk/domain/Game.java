@@ -43,4 +43,9 @@ public class Game {
 		
 	}
 
+	public void getTotalPlayers() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
