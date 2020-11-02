@@ -32,12 +32,22 @@ public class TestGame {
 	// Test to ADD Player to Skunk Game. 
 	
 	@Test
-	
 	public void test_game_add_player()
 	{
 		Game newGame = new Game();
 		newGame.addPlayer("Quan");
 	}
+	
+	// Test to REMOVE Player from Skunk Game. 
+	
+	@Test
+	public void test_game_remove_player()
+	{
+		Game newGame = new Game();
+		newGame.removePlayer("Quan");
+		fail();
+	}
+	
 		
 	// Test to verify Game object	
 		

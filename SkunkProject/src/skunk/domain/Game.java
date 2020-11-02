@@ -36,4 +36,9 @@ public class Game {
 		
 	}
 
+	public void removePlayer(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
