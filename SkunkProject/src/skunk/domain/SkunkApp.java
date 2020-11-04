@@ -16,7 +16,7 @@ public class SkunkApp
 	
 	public SkunkApp()
 	{
-
+		ui = new SkunkUI();
 	}
 	
 	//**********************************************************
@@ -43,6 +43,10 @@ public class SkunkApp
 		catch( Exception e )
 		{
 			StdOut.println("Exception in SkunkApp");
+			//e.printStackTrace();
+			
+			StdOut.print( e.toString() );
+			StdOut.println( e.getMessage() );
 		}
 	}
 	
