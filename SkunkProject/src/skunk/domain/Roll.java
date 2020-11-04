@@ -15,6 +15,13 @@ public class Roll
 		dice = new Dice();
 		
 		dice.roll();
+		
+	}
+
+	public int getRollTotal() 
+	{
+		return dice.getLastRoll();
+		
 	}
 	
 }
