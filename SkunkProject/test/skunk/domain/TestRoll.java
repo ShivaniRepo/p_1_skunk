@@ -14,7 +14,7 @@ public class TestRoll
 	public void test_roll_not_greater_than_12()
 	{
 		Roll roll =  new Roll();
-		int iTotal = roll.getRollTotal();
+		int iTotal = roll.getLastRollValue();
 		StdOut.println("iTotal: " + iTotal );
 		
 		assertTrue( iTotal < 12 );

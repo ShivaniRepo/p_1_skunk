@@ -21,13 +21,12 @@ public class Roll
 	}
 
 
-	public int getRollTotal() 
+	public int getLastRollValue() 
 	{
 		return dice.getLastRoll();		
 	}
 	
-	
-	
+		
 	public int getiRollTotal() 
 	{
 		return iRollTotal;
