@@ -21,13 +21,11 @@ public class SkunkController
 	
 	public boolean run()
 	{
-		//StdOut.println("in SkunkController class run()");
 		ui.printLine( "in SkunkController class run()" );
 		
 		//ask for number of player.
 		String strTemp = ui.printLineReadResponse( "Enter number of players?" );
 		this.iNumOfPlayers = Integer.parseInt( strTemp );
-		ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
 		
 		if( this.iNumOfPlayers < 0 )
 		{
@@ -45,12 +43,21 @@ public class SkunkController
 		//ask for player name
 		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
 		{
-			strTemp = ui.printLineReadResponse( "Enter Name of Player: " );
+			strTemp = ui.printLineReadResponse( "\nEnter Name of Player: " );
 			this.NameOfPlayers[iii] = strTemp;
-			ui.printLine( "Name of Player" + iii + ": " + this.NameOfPlayers[iii]  );
+			ui.printLine( "Name of Player " + iii + ": " + this.NameOfPlayers[iii]  );
 		}
 		
 		
+		//
+		Dice dice = new Dice();
+				
+		dice.roll();
+		
+		ui.printLine("Dice roll");
+		ui.printLine(dice.toString());
+		
+	
 		return false;
 	}
 	

@@ -26,13 +26,13 @@ public class SkunkApp
 		ui = new SkunkUI();
 		ui.welcomeString();
 		
-		Dice dice = new Dice();
-		StdOut.println("created Dice");
+		//Dice dice = new Dice();
+		//StdOut.println("created Dice");
 		
-		dice.roll();
+		//dice.roll();
 		
-		StdOut.println("Dice roll");
-		StdOut.println(dice.toString());
+		//StdOut.println("Dice roll");
+		//StdOut.println(dice.toString());
 		
 		SkunkController skunk = new SkunkController();
 		
