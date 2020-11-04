@@ -8,20 +8,33 @@ import edu.princeton.cs.introcs.StdOut;
 public class Roll
 {
 	private Dice dice;
+	private int iRollTotal;
 	
+	
+
 	public Roll()
 	{
 		StdOut.println("In Roll constructor: ");
 		dice = new Dice();
 		
 		dice.roll();
-		
 	}
+
 
 	public int getRollTotal() 
 	{
-		return dice.getLastRoll();
-		
+		return dice.getLastRoll();		
 	}
 	
+	
+	
+	public int getiRollTotal() 
+	{
+		return iRollTotal;
+	}
+
+	public void setiRollTotal(int iRollTotal) 
+	{
+		this.iRollTotal = iRollTotal;
+	}
 }
