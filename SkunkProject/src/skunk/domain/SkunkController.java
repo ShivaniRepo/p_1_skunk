@@ -21,31 +21,23 @@ public class SkunkController
 	
 	public boolean run()
 	{
-		ui.printLine( "in SkunkController class run()" );
+		//ui.printLine( "in SkunkController class run()" );
 		
 		//ask for number of player.
-		String strTemp = ui.printLineReadResponse( "Enter number of players?" );
-		this.iNumOfPlayers = Integer.parseInt( strTemp );
+		String strTemp;
+		int iStatus = getNumberOfPlayers();
 		
-		if( this.iNumOfPlayers < 0 )
+		while( iStatus < 0 ) 
 		{
-			ui.printLine( "invalid iNumOfPlayers: " + this.iNumOfPlayers + "Enter number of players greater than 0?" );
-		}
-		else if( this.iNumOfPlayers == 1 )
-		{
-			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
-		}
-		else
-		{
-			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
-		}
+			iStatus = getNumberOfPlayers();
+		} 
 		
 		//ask for player name
 		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
 		{
-			strTemp = ui.printLineReadResponse( "\nEnter Name of Player: " );
+			strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
 			this.NameOfPlayers[iii] = strTemp;
-			ui.printLine( "Name of Player " + iii + ": " + this.NameOfPlayers[iii]  );
+			//ui.printLine( "Name of Player " + (iii+1) + ": " + this.NameOfPlayers[iii]  );
 		}
 		
 		
@@ -59,6 +51,35 @@ public class SkunkController
 		
 	
 		return false;
+	}
+
+	//**********************************************************
+	// SkunkController will communicate with UI and get the number of players.
+	// Set the parsed number of players in player class.
+	//**********************************************************
+	
+	public int getNumberOfPlayers()
+	{
+		 ui.printLine( "*****" );
+		 String strTemp = ui.printLineReadResponse( "Enter number of players?" );
+		
+		this.iNumOfPlayers = Integer.parseInt( strTemp );
+		
+		if( this.iNumOfPlayers <= 0 )
+		{
+			ui.printLine( "invalid iNumOfPlayers: " + this.iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
+			return -1;
+		}
+		else if( this.iNumOfPlayers == 1 )
+		{
+			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
+		}
+		else
+		{
+			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
+		}
+		
+		return 0;
 	}
 	
 	//**********************************************************

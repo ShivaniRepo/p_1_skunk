@@ -8,13 +8,20 @@ import org.junit.Test;
 
 public class TestSkunkController
 {
+	//@Test
+	//public void test_skunk_controller_run()
+	//{
+	//	SkunkController skunk = new SkunkController();
+
+	//	boolean bStatus = skunk.run();
+
+	//	assertFalse(bStatus);
+	//}
+	
+	
 	@Test
-	public void test_skunk_controller_run()
+	public void test_skunk_controller_invalid_player_number()
 	{
-		SkunkController skunk = new SkunkController();
-
-		boolean bStatus = skunk.run();
-
-		assertFalse(bStatus);
+		fail();
 	}
 }
