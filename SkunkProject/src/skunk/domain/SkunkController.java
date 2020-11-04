@@ -5,6 +5,7 @@ package skunk.domain;
 public class SkunkController
 {
 
+	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 	private SkunkUI ui;
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
@@ -21,24 +22,20 @@ public class SkunkController
 	
 	public boolean run()
 	{
-		//ui.printLine( "in SkunkController class run()" );
+		String strTemp;
 		
 		//ask for number of player.
-		String strTemp;
-		int iStatus = getNumberOfPlayers();
+		askAndParse_NumberOfPlayers();
 		
+		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
 		while( iStatus < 0 ) 
 		{
-			iStatus = getNumberOfPlayers();
+			askAndParse_NumberOfPlayers();
+			iStatus = getNumberOfPlayers( this.iNumOfPlayers );
 		} 
 		
 		//ask for player name
-		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
-		{
-			strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
-			this.NameOfPlayers[iii] = strTemp;
-			//ui.printLine( "Name of Player " + (iii+1) + ": " + this.NameOfPlayers[iii]  );
-		}
+		savePlayerNamesInArray();
 		
 		
 		//
@@ -54,34 +51,52 @@ public class SkunkController
 	}
 
 	//**********************************************************
+	
+	public void askAndParse_NumberOfPlayers() 
+	{
+		String strTemp;
+		ui.printLine( "*****" );
+		strTemp = ui.printLineReadResponse( "Enter number of players?" );
+		this.iNumOfPlayers = Integer.parseInt( strTemp );
+	}
+
+	//**********************************************************
 	// SkunkController will communicate with UI and get the number of players.
-	// Set the parsed number of players in player class.
+	// Set the parsed number of players in the Player class.
 	//**********************************************************
 	
-	public int getNumberOfPlayers()
+	public int getNumberOfPlayers(int iNumOfPlayers)
 	{
-		 ui.printLine( "*****" );
-		 String strTemp = ui.printLineReadResponse( "Enter number of players?" );
-		
-		this.iNumOfPlayers = Integer.parseInt( strTemp );
-		
-		if( this.iNumOfPlayers <= 0 )
+		if( iNumOfPlayers <= 0 )
 		{
-			ui.printLine( "invalid iNumOfPlayers: " + this.iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
-			return -1;
+			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
+			return ERROR_INVALID_PLAYER_NUMBER;
 		}
-		else if( this.iNumOfPlayers == 1 )
+		else if( iNumOfPlayers == 1 )
 		{
-			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
+			ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
 		}
 		else
 		{
-			ui.printLine( "iNumOfPlayers: " + this.iNumOfPlayers );
+			ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
 		}
 		
 		return 0;
 	}
 	
+	
 	//**********************************************************
-
+	// SkunkController will communicate with UI and get the names of players.
+	// Set the names of the players in the Player class.
+	//**********************************************************
+		
+	public void savePlayerNamesInArray() 
+	{
+		String strTemp;
+		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
+		{
+			strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
+			this.NameOfPlayers[iii] = strTemp;
+		}
+	}
 }
