@@ -5,6 +5,7 @@ package skunk.domain;
 public class SkunkController
 {
 
+	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 	private SkunkUI ui;
 	private int iNumOfPlayers;
@@ -15,7 +16,7 @@ public class SkunkController
 	public SkunkController()
 	{
 		ui = new SkunkUI();
-		this.NameOfPlayers = new String[30];
+		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
 	}
 	
 	//**********************************************************

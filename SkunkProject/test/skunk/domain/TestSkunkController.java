@@ -31,4 +31,10 @@ public class TestSkunkController
 		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn );
 	}
 	
+	@Test
+	public void test_skunk_controller_valid_player_number_zero_to_Max()
+	{
+		fail();
+	}
+	
 }
