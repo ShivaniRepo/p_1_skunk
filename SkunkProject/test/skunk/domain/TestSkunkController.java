@@ -5,10 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 public class TestSkunkController
 {
+	private static final int RETURN_OK = 0;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 
 	//@Test
@@ -34,7 +37,16 @@ public class TestSkunkController
 	@Test
 	public void test_skunk_controller_valid_player_number_zero_to_Max()
 	{
-		fail();
+		SkunkController skunk = new SkunkController();
+		Random rand = new Random();
+		
+		int min = 1;
+		int max = 30;
+		
+		int iPlayerCount = rand.nextInt(max - min + 1) + min;
+		
+		int iReturn = skunk.getNumberOfPlayers( iPlayerCount );
+		assertEquals( RETURN_OK, iReturn );
 	}
 	
 }
