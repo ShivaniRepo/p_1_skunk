@@ -32,51 +32,67 @@ public class Turn
 		//Add name of active player Todo
 		uiT.printLine( "Starting Turn for player..." );
 		
-		//Reset the score for the activeplayer. Todo
+		//Reset the score for the activeplayer. Todo:
 		
-		boolean bWantToPlay = getRollChoice();
-				
-		while( bWantToPlay )
+		//
+		boolean bGameOver = false;
+		
+		while( !bGameOver )
 		{
-			roll.rollDice();
-			
-			int iValue = roll.getLastRollValue();
-			
-			//if skunk or deuce or double skunk, game ends
-			//Check for double skunk before regular skunk
-			if( roll.isDoubleSkunk() )
+			//Get player's chooses to roll or decline the roll
+			boolean bWantToPlay = getRollChoice();
+					
+			while( bWantToPlay )
 			{
-				uiT.printLine( "isDoubleSkunk" );
-				bWantToPlay = false;
-				iExitValue = -33;
+				roll.rollDice();
+				
+				int iValue = roll.getLastRollValue();
+				
+				//if skunk or deuce or double skunk, game ends
+				//Check for double skunk before regular skunk
+				if( roll.isDoubleSkunk() )
+				{
+					uiT.printLine( "isDoubleSkunk" );
+					bGameOver = true;
+					iExitValue = -33;
+					break;
+				}
+				else if( roll.isRegularSkunk() )
+				{
+					uiT.printLine( "isRegularSkunk" );
+					bGameOver = true;
+					iExitValue = -11;
+					break;
+				}
+				else if( roll.isSkunkDeuce() )
+				{
+					uiT.printLine( "isSkunkDeuce" );
+					bGameOver = true;
+					iExitValue = -22;
+					break;
+				}
+				
+				bWantToPlay = getRollChoice();
+				
+				//Set the scores for this turn
+				//Adjust chips for penalty.
+			}
+			
+			if( !bWantToPlay )
+			{
+				uiT.printLine( "Player declined the roll." );
+				bGameOver = true;
+				iExitValue = -44;
 				break;
 			}
-			else if( roll.isRegularSkunk() )
-			{
-				uiT.printLine( "isRegularSkunk" );
-				bWantToPlay = false;
-				iExitValue = -11;
-				break;
-			}
-			else if( roll.isSkunkDeuce() )
-			{
-				uiT.printLine( "isSkunkDeuce" );
-				bWantToPlay = false;
-				iExitValue = -22;
-				break;
-			}
-						
-			//Set the scores for this turn
-			//Adjust chips for penalty.
-			
-			//Or if player chooses to decline the roll
-			bWantToPlay = getRollChoice();
-		};
+		}
 		
-
-		
-		uiT.printLine( "Player declined the roll." );
-		return 0;
+		//End of the turn...
+		//Todo:
+		//Set the scores for this turn
+		//Adjust chips for penalty. 
+				
+		return iExitValue;
 	}
 	
 	//**********************************************************

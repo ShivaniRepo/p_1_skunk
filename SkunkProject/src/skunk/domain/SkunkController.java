@@ -47,7 +47,10 @@ public class SkunkController
 		
 		//For P1.2: Just one Player.
 		//One complete interactive turn of skunk with one human player.
+		//should be called through Game Todo:	
 		iStatus = turn.playTurn();
+		
+		ui.printLine( "Turn over." );
 		
 		return true;
 	}
@@ -58,8 +61,15 @@ public class SkunkController
 	{
 		String strTemp;
 		ui.printLine( "*****" );
-		strTemp = ui.printLineReadResponse( "Enter number of players?" );
-		this.iNumOfPlayers = Integer.parseInt( strTemp );
+		try
+		{
+			strTemp = ui.printLineReadResponse( "Enter number of players?" );
+			this.iNumOfPlayers = Integer.parseInt( strTemp );
+		}
+		catch( Exception e )
+		{
+			//Todo: if string entered is other than integer.
+		}
 	}
 
 	//**********************************************************
@@ -74,11 +84,7 @@ public class SkunkController
 			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
 			return ERROR_INVALID_PLAYER_NUMBER;
 		}
-		//else
-		//{
-		//	ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
-		//}
-		
+
 		return 0;
 	}
 	
@@ -93,8 +99,15 @@ public class SkunkController
 		String strTemp;
 		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
 		{
-			strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
-			this.NameOfPlayers[iii] = strTemp;
+			try
+			{
+				strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
+				this.NameOfPlayers[iii] = strTemp;
+			}
+			catch( Exception e )
+			{
+				//ToDo: empty string entered or just return key hit.
+			}
 		}
 	}
 }
