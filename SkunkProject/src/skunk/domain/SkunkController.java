@@ -50,7 +50,7 @@ public class SkunkController
 		//should be called through Game Todo:	
 		iStatus = turn.playTurn();
 		
-		ui.printLine( "Turn over." );
+		ui.printLine( "Turn is OVER." );
 		
 		return true;
 	}

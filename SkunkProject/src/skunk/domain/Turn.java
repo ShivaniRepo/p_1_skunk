@@ -9,6 +9,10 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class Turn
 {
+	private static final int CONSTANT_PLAYER_DECLINED_ROLL = -44;
+	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
+	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
+	private static final int CONSTANT_IS_DOUBLE_SKUNK = -33;
 	private Roll roll;
 	private SkunkUI uiT;
 	
@@ -54,21 +58,21 @@ public class Turn
 				{
 					uiT.printLine( "isDoubleSkunk" );
 					bGameOver = true;
-					iExitValue = -33;
+					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
 					break;
 				}
 				else if( roll.isRegularSkunk() )
 				{
 					uiT.printLine( "isRegularSkunk" );
 					bGameOver = true;
-					iExitValue = -11;
+					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
 					break;
 				}
 				else if( roll.isSkunkDeuce() )
 				{
 					uiT.printLine( "isSkunkDeuce" );
 					bGameOver = true;
-					iExitValue = -22;
+					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
 					break;
 				}
 				
@@ -82,7 +86,7 @@ public class Turn
 			{
 				uiT.printLine( "Player declined the roll." );
 				bGameOver = true;
-				iExitValue = -44;
+				iExitValue = CONSTANT_PLAYER_DECLINED_ROLL;
 				break;
 			}
 		}
