@@ -4,18 +4,25 @@ package skunk.domain;
 
 public class SkunkController
 {
-
+	//Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
-	private SkunkUI ui;
+	
+	//
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
+	
+	//Class objects
+	private SkunkUI ui;
+	private Turn turn;
 	
 	//**********************************************************
 	
 	public SkunkController()
 	{
 		ui = new SkunkUI();
+		turn = new Turn(ui);
+		
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
 	}
 	
@@ -23,11 +30,10 @@ public class SkunkController
 	
 	public boolean run()
 	{
-		String strTemp;
-		
-		//ask for number of player.
+		//ask for number of players.
 		askAndParse_NumberOfPlayers();
 		
+		//if the number of players entered in invalid, try again.
 		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
 		while( iStatus < 0 ) 
 		{
@@ -35,20 +41,15 @@ public class SkunkController
 			iStatus = getNumberOfPlayers( this.iNumOfPlayers );
 		} 
 		
-		//ask for player name
+		//ask for player's name, can add try and catch here.
 		savePlayerNamesInArray();
 		
 		
-		//
-		Dice dice = new Dice();
-				
-		dice.roll();
+		//For P1.2: Just one Player.
+		//One complete interactive turn of skunk with one human player.
+		iStatus = turn.playTurn();
 		
-		ui.printLine("Dice roll");
-		ui.printLine(dice.toString());
-		
-	
-		return false;
+		return true;
 	}
 
 	//**********************************************************
@@ -73,14 +74,10 @@ public class SkunkController
 			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
 			return ERROR_INVALID_PLAYER_NUMBER;
 		}
-		else if( iNumOfPlayers == 1 )
-		{
-			ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
-		}
-		else
-		{
-			ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
-		}
+		//else
+		//{
+		//	ui.printLine( "iNumOfPlayers: " + iNumOfPlayers );
+		//}
 		
 		return 0;
 	}
