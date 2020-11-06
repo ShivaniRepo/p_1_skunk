@@ -2,8 +2,10 @@ package skunk.domain;
 
 import edu.princeton.cs.introcs.StdOut;
 
+//**********************************************************
 //Turn: Series or multiple rolls until skunk or user decline to rolls
 //Single player.
+//**********************************************************
 
 public class Turn
 {
@@ -25,17 +27,20 @@ public class Turn
 	
 	public int playTurn()
 	{
-		uiT.printLine( "Turn Starting..." );
+		int iExitValue = 0;
+		
+		//Add name of active player Todo
+		uiT.printLine( "Starting Turn for player..." );
+		
+		//Reset the score for the activeplayer. Todo
 		
 		boolean bWantToPlay = getRollChoice();
-		//boolean bGameOver = false;
-		
+				
 		while( bWantToPlay )
 		{
 			roll.rollDice();
 			
 			int iValue = roll.getLastRollValue();
-			uiT.printLine( "iValue: " + iValue );
 			
 			//if skunk or deuce or double skunk, game ends
 			//Check for double skunk before regular skunk
@@ -43,28 +48,32 @@ public class Turn
 			{
 				uiT.printLine( "isDoubleSkunk" );
 				bWantToPlay = false;
-				return -33;
+				iExitValue = -33;
+				break;
 			}
-			
-			if( roll.isRegularSkunk() )
+			else if( roll.isRegularSkunk() )
 			{
 				uiT.printLine( "isRegularSkunk" );
 				bWantToPlay = false;
-				return -11;
+				iExitValue = -11;
+				break;
 			}
-			
-			if( roll.isSkunkDeuce() )
+			else if( roll.isSkunkDeuce() )
 			{
 				uiT.printLine( "isSkunkDeuce" );
 				bWantToPlay = false;
-				return -22;
+				iExitValue = -22;
+				break;
 			}
 						
+			//Set the scores for this turn
+			//Adjust chips for penalty.
 			
 			//Or if player chooses to decline the roll
 			bWantToPlay = getRollChoice();
 		};
 		
+
 		
 		uiT.printLine( "Player declined the roll." );
 		return 0;

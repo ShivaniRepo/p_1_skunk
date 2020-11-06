@@ -63,17 +63,17 @@ public class Roll
 		//		( dice.getPointerDie2().getLastRoll() == 1 ) )
 		if( iDie1 == 1 && iDie2 == 1)
 		{
-			ui1.printLine( "isRegularSkunk: false1 " + iDie1 + " " + iDie2);
+			//ui1.printLine( "isRegularSkunk: false1 " + iDie1 + " " + iDie2);
 			return false;
 		}
 		else if( iDie1 == 1 || iDie2 == 1)
 		{
-			ui1.printLine( "isRegularSkunk: true "+ iDie1 + " " + iDie2);
+			//ui1.printLine( "isRegularSkunk: true "+ iDie1 + " " + iDie2);
 			return true;
 		}
 		else
 		{
-			ui1.printLine( "isRegularSkunk: false2 "+ iDie1 + " " + iDie2);
+			//ui1.printLine( "isRegularSkunk: false2 "+ iDie1 + " " + iDie2);
 			return false;
 		}
 		
