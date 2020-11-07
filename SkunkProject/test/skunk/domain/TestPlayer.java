@@ -35,5 +35,13 @@ public class TestPlayer
 		Player player1 = new Player("test");
 		assertTrue(player1 instanceof Player);
 	}
+	
+	// Test to test set chips for Player
+	
+	@Test
+	public void testsetPlayerChipCount() 
+	{
+		fail();
+	}
 
 }
