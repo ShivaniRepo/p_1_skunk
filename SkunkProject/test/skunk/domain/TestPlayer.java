@@ -32,7 +32,8 @@ public class TestPlayer
 	@Test
 	public void testPlayerString() 
 	{	
-		fail();
+		Player player1 = new Player("test");
+		assertTrue(player1 instanceof Player);
 	}
 
 }
