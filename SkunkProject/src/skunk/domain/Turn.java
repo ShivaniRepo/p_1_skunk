@@ -13,7 +13,7 @@ public class Turn
 	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
 	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
 	private static final int CONSTANT_IS_DOUBLE_SKUNK = -33;
-	private Roll roll;
+	private Roll roll = new Roll();
 	private SkunkUI uiT;
 	
 	//**********************************************************
@@ -21,11 +21,15 @@ public class Turn
 	public Turn( SkunkUI ui )
 	{
 		//StdOut.println("In Turn constructor: ");
-		roll = new Roll();
-	
+		//roll = new Roll();
 		uiT = ui;
 	}
 	
+
+	public Turn() 
+	{
+	
+	}
 
 	//**********************************************************
 	
@@ -78,8 +82,9 @@ public class Turn
 				
 				bWantToPlay = getRollChoice();
 				
+				//Todo:
 				//Set the scores for this turn
-				//Adjust chips for penalty.
+				//Adjust chips for penalty. may be not here
 			}
 			
 			if( !bWantToPlay )
