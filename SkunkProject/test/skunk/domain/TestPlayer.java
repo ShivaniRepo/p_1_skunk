@@ -7,13 +7,14 @@ import org.junit.Test;
 
 public class TestPlayer
 {
-	Player player = new Player("test");	
+	
 	
 	// Test to verify Player's score 
 
 	@Test
 	public void testPlayer1()
 	{
+		Player player = new Player();	
 		assertEquals("testPlayer1", 0, player.getPlayerScore());
 	}
 	
@@ -41,7 +42,9 @@ public class TestPlayer
 	@Test
 	public void testsetPlayerChipCount() 
 	{
-		fail();
+		Player player1 = new Player("test");
+		player1.setPlayerChipCount(5);
+		assertTrue(player1.getPlayerChipCount() == 5);
 	}
 
 }
