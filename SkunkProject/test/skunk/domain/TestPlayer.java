@@ -26,5 +26,13 @@ public class TestPlayer
 		assertEquals("test",player1.getPlayerName());
 		
 	}
+	
+	// Test to verify Player's name is a String
+	
+	@Test
+	public void testPlayerString() 
+	{	
+		fail();
+	}
 
 }
