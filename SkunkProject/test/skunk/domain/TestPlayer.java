@@ -1,12 +1,13 @@
 package skunk.domain;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 public class TestPlayer
 {
-	Player player = new Player();	
+	Player player = new Player("test");	
 	
 	// Test to verify Player's score 
 
@@ -21,7 +22,8 @@ public class TestPlayer
 	@Test	
 	public void testPlayer2() {
 		
-		assertEquals("testPlayer2", "Chris", player.getPlayerName());
+		Player player1 = new Player("test");
+		assertEquals("test",player1.getPlayerName());
 		
 	}
 
