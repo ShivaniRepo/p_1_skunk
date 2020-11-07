@@ -19,9 +19,9 @@ public class TestPlayer
 	// Test to verify Player's name
 	
 	@Test	
-	public void testPlayer4() {
+	public void testPlayer2() {
 		
-		fail();
+		assertEquals("testPlayer2", "Chris", player.getPlayerName());
 		
 	}
 
