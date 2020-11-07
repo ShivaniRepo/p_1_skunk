@@ -64,5 +64,7 @@ public class TestGame {
 	{
 		Game newGame = new Game();
 	}	
+	
+	// Added in comment
 }
 
