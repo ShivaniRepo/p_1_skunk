@@ -20,10 +20,12 @@ public class Player {
 
 	}
 
-	public void setPlayer() {
-		playerName = newGame.getPlayerName();
-		playerNum = newGame.getNumPlayers();
-	}
+	
+	// Draft - Needs to be updated
+//	public void setPlayer() {
+//		playerName = newGame.getPlayerName();
+//		playerNum = newGame.getNumPlayers();
+//	}
 
 	public String getPlayerName() {
 		return this.playerName;
@@ -32,20 +34,23 @@ public class Player {
 	public int getPlayerNum() {
 		return this.playerNum;
 	}
+	
+	// Draft - Needs to be updated
+//	public int getPlayerScore() {
+//		this.playerScore += newGame.getGameScore();
+//		return this.playerScore;
+//	}
 
-	public int getPlayerScore() {
-		this.playerScore += newGame.getGameScore();
-		return this.playerScore;
-	}
-
-	public int getPlayerChipCount() {
-		if (roll.getDie1Score() == 1 & roll.getDie2Score() == 1) {
-			this.chipCount = 0;
-			return this.chipCount;
-		} else {
-			return this.chipCount += roll.updateChipCount();
-		}
-	}
+	
+	// Draft - Needs to be updated
+//	public int getPlayerChipCount() {
+//		if (roll.getDie1Score() == 1 & roll.getDie2Score() == 1) {
+//			this.chipCount = 0;
+//			return this.chipCount;
+//		} else {
+//			return this.chipCount += roll.updateChipCount();
+//		}
+//	}
 
 	public void setPlayerChipCount() { // 12/14/19
 		this.chipCount = 0;
