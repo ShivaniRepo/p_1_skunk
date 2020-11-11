@@ -28,6 +28,12 @@ public class TestGame {
 		
 	}
 	
+	@Test
+	public void test_end_game()
+	{
+		fail();
+	}
+	
 	// Test to ADD Player to Skunk Game. 
 	
 	@Test

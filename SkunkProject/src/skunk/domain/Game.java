@@ -3,6 +3,7 @@ package skunk.domain;
 public class Game {
 	
 	private boolean StartGame = false;
+	private boolean EndGame = false;
 	
 	public String getGameStatus()
 	{
@@ -20,6 +21,11 @@ public class Game {
 	public void startGame()
 	{
 		this.StartGame = true;
+	}
+	
+	public void endGame()
+	{
+		this.EndGame = false;
 	}
 	
 	
