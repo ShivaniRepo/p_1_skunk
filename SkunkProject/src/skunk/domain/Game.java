@@ -32,7 +32,7 @@ public class Game {
 	}
 	
 	
-	// Return total players
+	// Return total players.
 	public int getTotalPlayers()
 	{
 		int total = totalPlayers.size();
@@ -49,13 +49,11 @@ public class Game {
 		
 	}
 	
-	// Method to REMOVE Player from Game. 
+	// Method to REMOVE all Players from Game. 
 
-	public void removePlayer(String string) 
+	public void removePlayers() 
 	{
-		// TODO Auto-generated method stub
-		// Need method from Player class to remove player. 
-		
+		totalPlayers.clear();
 	}
 
 }
