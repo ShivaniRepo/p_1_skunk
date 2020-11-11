@@ -59,7 +59,7 @@ public class TestGame {
 		newGame.addPlayer("Quan");
 		newGame.addPlayer("Shivani");
 		newGame.addPlayer("Ayan");
-//		newGame.removePlayers();
+		newGame.removePlayers();
 		assertTrue(newGame.getTotalPlayers() == 3);
 	}
 	
