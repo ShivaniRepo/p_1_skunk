@@ -31,7 +31,9 @@ public class TestGame {
 	@Test
 	public void test_end_game()
 	{
-		fail();
+		Game newGame = new Game();
+		
+		
 	}
 	
 	// Test to ADD Player to Skunk Game. 
