@@ -78,8 +78,8 @@ public class TestGame {
 	@Test
 	public void test_game_object() 
 	{
-//		Game newGame = new Game();
-		Game newGame = null;
+		Game newGame = new Game();
+//		Game newGame = null;
 		assertNotNull(newGame);
 
 	}	
