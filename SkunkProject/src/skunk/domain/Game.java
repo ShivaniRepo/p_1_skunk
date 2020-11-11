@@ -1,12 +1,16 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Game {
 	
-	private boolean gameStarted = false;
+	private boolean StartGame = false;
+	private boolean EndGame = false;
+	private ArrayList<Player> totalPlayers = new ArrayList();
 	
 	public String getGameStatus()
 	{
-		if (gameStarted == true) 
+		if (StartGame == true) 
 		{
 			return "Skunk game has started.";
 		}
@@ -17,41 +21,39 @@ public class Game {
 		
 	}
 	
-	public void gameStart()
+	public void startGame()
 	{
-		this.gameStarted = true;
+		this.StartGame = true;
+	}
+	
+	public boolean endGame()
+	{
+		return this.EndGame = false;
 	}
 	
 	
-	// Method to return total number of players. Need to follow up with Player class. 
-	public int getPlayers()
+	// Return total players.
+	public int getTotalPlayers()
 	{
-		return 0;
+		int total = totalPlayers.size();
+		return total;
 		
 	}
 
 	// Method to add Player to Game. 
-	public void addPlayer(String string) {
-		// TODO Auto-generated method stub
+	public void addPlayer(String string) 
+	
+	{
+		Player player = new Player(string);
+		totalPlayers.add(player);
 		
 	}
 	
-	// Method to REMOVE Player from Game. 
+	// Method to REMOVE all Players from Game. 
 
-	public void removePlayer(String string) {
-		// TODO Auto-generated method stub
-		// Need method from Player class to remove player. 
-		
-	}
-	
-	// Method to get Total Player count for Game
-
-	public int getTotalPlayers() {
-		// TODO Auto-generated method stub
-		// Need method from Player class for total. 
-		// return TotalPlayers
-		return 0;
-		
+	public void removePlayers() 
+	{
+		totalPlayers.clear();
 	}
 
 }
