@@ -11,13 +11,15 @@ public class Player {
 	
 	public Player() 
 	{
-
+		this.chipCount = 50;
+		this.playerScore = 0;
 	}
 
 	public Player(String playerName)
 	{
 		this.playerName= playerName;
 	}
+	
 	public Player(int playerCount, String playerID) {
 		this.playerName = playerID;
 		this.playerNum = playerCount;
