@@ -33,7 +33,7 @@ public class Game {
 	
 	
 	// Method to return total number of players. Need to follow up with Player class. 
-	public int getPlayers()
+	public int getTotalPlayers()
 	{
 		int total = totalPlayers.size();
 		return total;
@@ -41,26 +41,19 @@ public class Game {
 	}
 
 	// Method to add Player to Game. 
-	public void addPlayer(String string) {
+	public void addPlayer(String string) 
+	
+	{
 		// TODO Auto-generated method stub
 		
 	}
 	
 	// Method to REMOVE Player from Game. 
 
-	public void removePlayer(String string) {
+	public void removePlayer(String string) 
+	{
 		// TODO Auto-generated method stub
 		// Need method from Player class to remove player. 
-		
-	}
-	
-	// Method to get Total Player count for Game
-
-	public int getTotalPlayers() {
-		// TODO Auto-generated method stub
-		// Need method from Player class for total. 
-		// return TotalPlayers
-		return 0;
 		
 	}
 

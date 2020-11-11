@@ -64,8 +64,8 @@ public class TestGame {
 	public void test_game_total_player()
 	{
 		Game newGame = new Game();
-		newGame.getPlayers();
-		fail();
+		int total = newGame.getTotalPlayers();
+		assertNotNull(total);
 	}
 	
 		
