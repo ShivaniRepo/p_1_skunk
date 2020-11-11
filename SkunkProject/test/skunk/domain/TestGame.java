@@ -22,7 +22,7 @@ public class TestGame {
 		
 		// Test to verify game started.
 		
-		newGame.gameStart();
+		newGame.startGame();
 		gameStatus = newGame.getGameStatus();
 		assertEquals("Skunk game has started.", gameStatus);
 		

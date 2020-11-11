@@ -2,11 +2,11 @@ package skunk.domain;
 
 public class Game {
 	
-	private boolean gameStarted = false;
+	private boolean StartGame = false;
 	
 	public String getGameStatus()
 	{
-		if (gameStarted == true) 
+		if (StartGame == true) 
 		{
 			return "Skunk game has started.";
 		}
@@ -17,9 +17,9 @@ public class Game {
 		
 	}
 	
-	public void gameStart()
+	public void startGame()
 	{
-		this.gameStarted = true;
+		this.StartGame = true;
 	}
 	
 	
