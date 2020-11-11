@@ -28,6 +28,8 @@ public class TestGame {
 		
 	}
 	
+	// Test to verify game has ended. 
+	
 	@Test
 	public void test_end_game()
 	{
@@ -62,7 +64,8 @@ public class TestGame {
 	public void test_game_total_player()
 	{
 		Game newGame = new Game();
-		newGame.getTotalPlayers();
+		newGame.getPlayers();
+		fail();
 	}
 	
 		
@@ -74,6 +77,5 @@ public class TestGame {
 		Game newGame = new Game();
 	}	
 	
-	// Added in comment
 }
 

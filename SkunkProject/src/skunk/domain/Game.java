@@ -1,9 +1,12 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Game {
 	
 	private boolean StartGame = false;
 	private boolean EndGame = false;
+	private ArrayList<Player> totalPlayers = new ArrayList();
 	
 	public String getGameStatus()
 	{
@@ -32,7 +35,8 @@ public class Game {
 	// Method to return total number of players. Need to follow up with Player class. 
 	public int getPlayers()
 	{
-		return 0;
+		int total = totalPlayers.size();
+		return total;
 		
 	}
 
