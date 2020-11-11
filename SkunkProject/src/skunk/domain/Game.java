@@ -23,9 +23,9 @@ public class Game {
 		this.StartGame = true;
 	}
 	
-	public void endGame()
+	public boolean endGame()
 	{
-		this.EndGame = false;
+		return this.EndGame = false;
 	}
 	
 	

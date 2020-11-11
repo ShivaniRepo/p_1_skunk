@@ -32,8 +32,10 @@ public class TestGame {
 	public void test_end_game()
 	{
 		Game newGame = new Game();
+		boolean gameStatus;
 		
-		
+		gameStatus = newGame.endGame();
+		assertTrue(gameStatus == false);
 	}
 	
 	// Test to ADD Player to Skunk Game. 
