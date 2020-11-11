@@ -40,7 +40,7 @@ public class TestGame {
 		assertTrue(gameStatus == false);
 	}
 	
-	// Test to ADD Player to Skunk Game. 
+	// TODO Test to ADD Player to Skunk Game. 
 	
 	@Test
 	public void test_game_add_player()
@@ -49,7 +49,7 @@ public class TestGame {
 		newGame.addPlayer("Quan");
 	}
 	
-	// Test to REMOVE Player from Skunk Game. 
+	// TODO Test to REMOVE Player from Skunk Game. 
 	
 	@Test
 	public void test_game_remove_player()
@@ -58,7 +58,7 @@ public class TestGame {
 		newGame.removePlayer("Quan");
 	}
 	
-	// Test for Total Players in Skunk Game.
+	// TODO:: Test for Total Players in Skunk Game.
 	
 	@Test
 	public void test_game_total_player()
@@ -68,7 +68,6 @@ public class TestGame {
 		assertNotNull(total);
 	}
 	
-		
 	// Test to verify Game object	
 		
 	@Test
