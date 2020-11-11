@@ -32,7 +32,7 @@ public class Game {
 	}
 	
 	
-	// Method to return total number of players. Need to follow up with Player class. 
+	// Return total players
 	public int getTotalPlayers()
 	{
 		int total = totalPlayers.size();
@@ -44,7 +44,8 @@ public class Game {
 	public void addPlayer(String string) 
 	
 	{
-		// TODO Auto-generated method stub
+		Player player = new Player(string);
+		totalPlayers.add(player);
 		
 	}
 	

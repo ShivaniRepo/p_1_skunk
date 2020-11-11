@@ -47,6 +47,7 @@ public class TestGame {
 	{
 		Game newGame = new Game();
 		newGame.addPlayer("Quan");
+		assertTrue(newGame.getTotalPlayers() == 1);
 	}
 	
 	// TODO Test to REMOVE Player from Skunk Game. 
