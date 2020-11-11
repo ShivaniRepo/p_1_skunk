@@ -79,7 +79,6 @@ public class TestGame {
 	public void test_game_object() 
 	{
 		Game newGame = new Game();
-//		Game newGame = null;
 		assertNotNull(newGame);
 
 	}	
