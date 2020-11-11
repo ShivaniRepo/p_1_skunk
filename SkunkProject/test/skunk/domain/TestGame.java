@@ -60,7 +60,7 @@ public class TestGame {
 		newGame.addPlayer("Shivani");
 		newGame.addPlayer("Ayan");
 //		newGame.removePlayers();
-		assertTrue(newGame.getTotalPlayers() == 0);
+		assertTrue(newGame.getTotalPlayers() == 3);
 	}
 	
 	// TODO:: Test for Total Players in Skunk Game.
