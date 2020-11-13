@@ -10,6 +10,8 @@ public class TestDice {
 	public void test_Dice_Roll_Value() 
 	{
 		Dice dice = new Dice();
+		dice.roll();
+		assertTrue(dice.getLastRoll() >= 2 && dice.getLastRoll() <= 12);
 	}
 
 }
