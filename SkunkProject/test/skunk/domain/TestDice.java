@@ -9,7 +9,7 @@ public class TestDice {
 	@Test
 	public void test_Dice_Roll_Value() 
 	{
-		fail();
+		Dice dice = new Dice();
 	}
 
 }
