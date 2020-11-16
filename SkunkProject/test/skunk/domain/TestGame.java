@@ -30,58 +30,58 @@ public class TestGame {
 	
 	// Test to verify game has ended. 
 	
-	@Test
-	public void test_end_game()
-	{
-		Game newGame = new Game();
-		boolean gameStatus;
-		
-		gameStatus = newGame.endGame();
-		assertTrue(gameStatus == false);
-	}
-	
-	//  Test to ADD Player to Skunk Game. 
-	
-	@Test
-	public void test_game_add_player()
-	{
-		Game newGame = new Game();
-		newGame.addPlayer("Quan");
-		assertTrue(newGame.getTotalPlayers() == 1);
-	}
-	
-	// Test to REMOVE Player from Skunk Game. 
-	
-	@Test
-	public void test_game_remove_player()
-	{
-		Game newGame = new Game();
-		newGame.addPlayer("Quan");
-		newGame.addPlayer("Shivani");
-		newGame.addPlayer("Ayan");
-		newGame.removePlayers();
-		assertTrue(newGame.getTotalPlayers() == 0);
-	}
-	
-	// Test for Total Players in Skunk Game.
-	
-	@Test
-	public void test_game_total_player()
-	{
-		Game newGame = new Game();
-		int total = newGame.getTotalPlayers();
-		assertNotNull(total);
-	}
-	
-	// Test to verify Game object	
-		
-	@Test
-	public void test_game_object() 
-	{
-		Game newGame = new Game();
-		assertNotNull(newGame);
-
-	}	
-	
+//	@Test
+//	public void test_end_game()
+//	{
+//		Game newGame = new Game();
+//		boolean gameStatus;
+//		
+//		gameStatus = newGame.endGame();
+//		assertTrue(gameStatus == false);
+//	}
+//	
+//	//  Test to ADD Player to Skunk Game. 
+//	
+//	@Test
+//	public void test_game_add_player()
+//	{
+//		Game newGame = new Game();
+//		newGame.addPlayer("Quan");
+//		assertTrue(newGame.getTotalPlayers() == 1);
+//	}
+//	
+//	// Test to REMOVE Player from Skunk Game. 
+//	
+//	@Test
+//	public void test_game_remove_player()
+//	{
+//		Game newGame = new Game();
+//		newGame.addPlayer("Quan");
+//		newGame.addPlayer("Shivani");
+//		newGame.addPlayer("Ayan");
+//		newGame.removePlayers();
+//		assertTrue(newGame.getTotalPlayers() == 0);
+//	}
+//	
+//	// Test for Total Players in Skunk Game.
+//	
+//	@Test
+//	public void test_game_total_player()
+//	{
+//		Game newGame = new Game();
+//		int total = newGame.getTotalPlayers();
+//		assertNotNull(total);
+//	}
+//	
+//	// Test to verify Game object	
+//		
+//	@Test
+//	public void test_game_object() 
+//	{
+//		Game newGame = new Game();
+//		assertNotNull(newGame);
+//
+//	}	
+//	
 }
 
