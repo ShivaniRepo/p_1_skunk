@@ -1,11 +1,16 @@
 package skunk.domain;
 
+
 //import java.util.ArrayList;
+
+import java.util.ArrayList;
+
 
 public class Game {
 	
 	private boolean StartGame = false;
 	private boolean EndGame = false;
+
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
 //	private ArrayList<Player> totalPlayers = new ArrayList();
@@ -26,6 +31,8 @@ public class Game {
 		turn = new Turn(ui);
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
 	}
+
+	private ArrayList<Player> totalPlayers = new ArrayList();
 	
 	public String getGameStatus()
 	{
@@ -49,7 +56,7 @@ public class Game {
 	{
 		return this.EndGame = false;
 	}
-	
+
 	public boolean run() 
 	{
 		// Ask for number of players.
@@ -88,6 +95,22 @@ public class Game {
 		{
 			//Todo: if string entered is other than integer.
 		}
+    
+	// Return total players.
+	public int getTotalPlayers()
+	{
+		int total = totalPlayers.size();
+		return total;
+		
+	}
+
+	// Method to add Player to Game. 
+	public void addPlayer(String string) 
+	
+	{
+		Player player = new Player(string);
+		totalPlayers.add(player);
+		
 	}
 
 	//**********************************************************
@@ -95,6 +118,7 @@ public class Game {
 	// Set the parsed number of players in the Player class.
 	//**********************************************************
 	
+
 	public int getNumberOfPlayers(int iNumOfPlayers)
 	{
 		if( iNumOfPlayers <= 0 )
@@ -126,6 +150,12 @@ public class Game {
 				//ToDo: empty string entered or just return key hit.
 			}
 		}
+
+	// Method to REMOVE all Players from Game. 
+
+	public void removePlayers() 
+	{
+		totalPlayers.clear();
 	}
 
 //	
