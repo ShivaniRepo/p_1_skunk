@@ -77,17 +77,7 @@ public class TestGame {
 		assertTrue(newGame.getTotalPlayers() == 0);
 
 	}
-	
-	@Test
-	public void test_end_game()
-	{
-		Game newGame = new Game();
-
-		boolean gameStatus;
-		
-		gameStatus = newGame.endGame();
-		assertTrue(gameStatus == false);
-	}
+}
 
 //	//  Test to ADD Player to Skunk Game. 
 //	
@@ -132,19 +122,3 @@ public class TestGame {
 //
 //	}	
 //	
-
-		int total = newGame.getTotalPlayers();
-		assertNotNull(total);
-	}
-	
-	// Test to verify Game object	
-		
-	@Test
-	public void test_game_object() 
-	{
-		Game newGame = new Game();
-		assertNotNull(newGame);
-
-	}	
-}
-
