@@ -2,12 +2,10 @@ package skunk.domain;
 
 public class Player {
 
-	private int chipCount = 50;
-	private int playerScore = 0;
+	private int chipCount;
+	private int playerScore;
 	int playerNum = 0;
 	String playerName = null;
-	Game newGame = new Game();
-	Roll roll = new Roll();
 	
 	public Player() 
 	{
@@ -18,14 +16,14 @@ public class Player {
 	public Player(String playerName)
 	{
 		this.playerName= playerName;
+		this.chipCount = 50;
+		this.playerScore = 0;
 	}
 	
 	public Player(int playerCount, String playerID) {
 		this.playerName = playerID;
 		this.playerNum = playerCount;
 	}
-
-	
 
 	
 	// Draft - Needs to be updated
@@ -45,8 +43,6 @@ public class Player {
 	public int getPlayerScore() {
 		return this.playerScore;
 	}
-
-	
 
 	public int getPlayerChipCount() 
 	{
