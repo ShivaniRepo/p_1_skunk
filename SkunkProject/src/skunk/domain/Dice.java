@@ -34,7 +34,7 @@ public class Dice
 
 		this.die1 = new Die();
 		this.die2 = new Die();
-		//this.roll();
+		this.roll();
 	}
 
 	
