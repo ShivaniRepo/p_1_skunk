@@ -5,11 +5,11 @@ package skunk.domain;
 public class Game {
 	
 	private boolean StartGame = false;
-//	private boolean EndGame = false;
-//	private ArrayList<Player> totalPlayers = new ArrayList();
-	
+	private boolean EndGame = false;
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
+//	private ArrayList<Player> totalPlayers = new ArrayList();
+
 	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
@@ -20,7 +20,8 @@ public class Game {
 	private Turn turn;
 	
 	// Game Constructor 
-	public Game() {
+	public Game() 
+	{
 		ui = new SkunkUI();
 		turn = new Turn(ui);
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
@@ -42,6 +43,11 @@ public class Game {
 	public void startGame()
 	{
 		this.StartGame = true;
+	}
+	
+	public boolean endGame()
+	{
+		return this.EndGame = false;
 	}
 	
 	public boolean run() 
@@ -122,11 +128,6 @@ public class Game {
 		}
 	}
 
-	
-//	public boolean endGame()
-//	{
-//		return this.EndGame = false;
-//	}
 //	
 //	
 //	// Return total players.

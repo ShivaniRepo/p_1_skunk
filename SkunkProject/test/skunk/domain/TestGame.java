@@ -55,18 +55,16 @@ public class TestGame {
 		assertEquals( RETURN_OK, iReturn );
 	}
 	
-	// Test to verify game has ended. 
-	
-//	@Test
-//	public void test_end_game()
-//	{
-//		Game newGame = new Game();
-//		boolean gameStatus;
-//		
-//		gameStatus = newGame.endGame();
-//		assertTrue(gameStatus == false);
-//	}
-//	
+	@Test
+	public void test_end_game()
+	{
+		Game newGame = new Game();
+		boolean gameStatus;
+		
+		gameStatus = newGame.endGame();
+		assertTrue(gameStatus == false);
+	}
+
 //	//  Test to ADD Player to Skunk Game. 
 //	
 //	@Test
