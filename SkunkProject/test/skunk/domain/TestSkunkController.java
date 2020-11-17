@@ -23,30 +23,5 @@ public class TestSkunkController
 
 	//	assertFalse(bStatus);
 	//}
-	
-	
-//	@Test
-//	public void test_skunk_controller_invalid_player_number_negative()
-//	{
-//		SkunkController skunk = new SkunkController();
-//		
-//		int iReturn = skunk.getNumberOfPlayers(-1);
-//		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn );
-//	}
-//	
-//	@Test
-//	public void test_skunk_controller_valid_player_number_zero_to_Max()
-//	{
-//		SkunkController skunk = new SkunkController();
-//		Random rand = new Random();
-//		
-//		int min = 1;
-//		int max = 30;
-//		
-//		int iPlayerCount = rand.nextInt(max - min + 1) + min;
-//		
-//		int iReturn = skunk.getNumberOfPlayers( iPlayerCount );
-//		assertEquals( RETURN_OK, iReturn );
-//	}
-	
+
 }

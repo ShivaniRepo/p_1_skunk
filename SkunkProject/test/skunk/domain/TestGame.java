@@ -2,11 +2,14 @@ package skunk.domain;
 
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 public class TestGame {
 	
-	// Test to verify Skunk game NOT started and started
+	private static final int RETURN_OK = 0;
+	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 
 	@Test
 	public void test_game_status() 
@@ -26,6 +29,31 @@ public class TestGame {
 		gameStatus = newGame.getGameStatus();
 		assertEquals("Skunk game has started.", gameStatus);
 		
+	}
+	
+	@Test
+	public void test_game_invalid_player_number_negative()
+	{
+		Game newGame = new Game();
+		
+		int iReturn = newGame.getNumberOfPlayers(-1);
+		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn);
+		
+	}
+
+	@Test
+	public void test_skunk_game_valid_player_number_zero_to_Max()
+	{
+		Game newGame = new Game();
+		Random rand = new Random();
+		
+		int min = 1;
+		int max = 30;
+		
+		int iPlayerCount = rand.nextInt(max - min + 1) + min;
+		
+		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
+		assertEquals( RETURN_OK, iReturn );
 	}
 	
 	// Test to verify game has ended. 
