@@ -2,6 +2,7 @@ package skunk.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -11,9 +12,6 @@ import org.junit.Test;
 
 public class TestSkunkController
 {
-	private static final int RETURN_OK = 0;
-	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
-
 	//@Test
 	//public void test_skunk_controller_run()
 	//{
@@ -23,5 +21,14 @@ public class TestSkunkController
 
 	//	assertFalse(bStatus);
 	//}
+	
+	@Test
+	public void test_controller_object() 
+	{
+		fail();
+//		Game newGame = new Game();
+//		assertNotNull(newGame);
+
+	}	
 
 }
