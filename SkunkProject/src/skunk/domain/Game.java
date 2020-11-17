@@ -11,11 +11,11 @@ public class Game {
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
 	
-	//Constants
+	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 	
-	//Class objects
+	// Class objects
 	private SkunkUI ui;
 	private Turn turn;
 	
@@ -43,6 +43,85 @@ public class Game {
 	{
 		this.StartGame = true;
 	}
+	
+	public boolean run() 
+	{
+		// Ask for number of players.
+		askAndParse_NumberOfPlayers();
+		
+		// If the number of players entered in invalid, try again.
+		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
+		while( iStatus < 0 ) 
+		{
+			askAndParse_NumberOfPlayers();
+			iStatus = getNumberOfPlayers( this.iNumOfPlayers );
+		} 
+		
+		// Ask for player's name, can add try and catch here.
+		savePlayerNamesInArray();
+		
+		//For P1.2: Just one Player.
+		//One complete interactive turn of skunk with one human player.
+		
+		iStatus = turn.playTurn();
+		ui.printLine( "Turn is OVER." );
+		
+		return true;
+	}
+	
+	public void askAndParse_NumberOfPlayers() 
+	{
+		String strTemp;
+		ui.printLine( "*****" );
+		try
+		{
+			strTemp = ui.printLineReadResponse( "Enter number of players?" );
+			this.iNumOfPlayers = Integer.parseInt( strTemp );
+		}
+		catch( Exception e )
+		{
+			//Todo: if string entered is other than integer.
+		}
+	}
+
+	//**********************************************************
+	// Game will communicate with controller and get the number of players.
+	// Set the parsed number of players in the Player class.
+	//**********************************************************
+	
+	public int getNumberOfPlayers(int iNumOfPlayers)
+	{
+		if( iNumOfPlayers <= 0 )
+		{
+			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
+			return ERROR_INVALID_PLAYER_NUMBER;
+		}
+
+		return 0;
+	}
+	
+	//**********************************************************
+	// Game will communicate with controller and get the names of players.
+	// Set the names of the players in the Player class.
+	//**********************************************************
+		
+	public void savePlayerNamesInArray() 
+	{
+		String strTemp;
+		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
+		{
+			try
+			{
+				strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
+				this.NameOfPlayers[iii] = strTemp;
+			}
+			catch( Exception e )
+			{
+				//ToDo: empty string entered or just return key hit.
+			}
+		}
+	}
+
 	
 //	public boolean endGame()
 //	{
@@ -74,86 +153,5 @@ public class Game {
 //		totalPlayers.clear();
 //	}
 //
-	public boolean run() 
 	
-	{
-		// Ask for number of players.
-		askAndParse_NumberOfPlayers();
-		
-		// If the number of players entered in invalid, try again.
-		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
-		while( iStatus < 0 ) 
-		{
-			askAndParse_NumberOfPlayers();
-			iStatus = getNumberOfPlayers( this.iNumOfPlayers );
-		} 
-		
-		// Ask for player's name, can add try and catch here.
-		savePlayerNamesInArray();
-		
-		
-		//For P1.2: Just one Player.
-		//One complete interactive turn of skunk with one human player.
-		
-		iStatus = turn.playTurn();
-		
-		ui.printLine( "Turn is OVER." );
-		
-		return true;
-		
-	}
-	
-	public void askAndParse_NumberOfPlayers() 
-	{
-		String strTemp;
-		ui.printLine( "*****" );
-		try
-		{
-			strTemp = ui.printLineReadResponse( "Enter number of players?" );
-			this.iNumOfPlayers = Integer.parseInt( strTemp );
-		}
-		catch( Exception e )
-		{
-			//Todo: if string entered is other than integer.
-		}
-	}
-
-	//**********************************************************
-	// SkunkController will communicate with UI and get the number of players.
-	// Set the parsed number of players in the Player class.
-	//**********************************************************
-	
-	public int getNumberOfPlayers(int iNumOfPlayers)
-	{
-		if( iNumOfPlayers <= 0 )
-		{
-			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
-			return ERROR_INVALID_PLAYER_NUMBER;
-		}
-
-		return 0;
-	}
-	
-	//**********************************************************
-	// SkunkController will communicate with UI and get the names of players.
-	// Set the names of the players in the Player class.
-	//**********************************************************
-		
-	public void savePlayerNamesInArray() 
-	{
-		String strTemp;
-		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
-		{
-			try
-			{
-				strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
-				this.NameOfPlayers[iii] = strTemp;
-			}
-			catch( Exception e )
-			{
-				//ToDo: empty string entered or just return key hit.
-			}
-		}
-	}
-
 }

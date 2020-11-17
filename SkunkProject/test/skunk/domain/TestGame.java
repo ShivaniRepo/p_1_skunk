@@ -14,7 +14,6 @@ public class TestGame {
 	@Test
 	public void test_game_status() 
 	{
-		
 		Game newGame = new Game();
 		String gameStatus;
 		
