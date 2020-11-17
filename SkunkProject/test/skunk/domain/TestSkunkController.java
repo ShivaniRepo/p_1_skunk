@@ -25,9 +25,8 @@ public class TestSkunkController
 	@Test
 	public void test_controller_object() 
 	{
-		fail();
-//		Game newGame = new Game();
-//		assertNotNull(newGame);
+		SkunkController controller = new SkunkController();
+		assertNotNull(controller);
 
 	}	
 
