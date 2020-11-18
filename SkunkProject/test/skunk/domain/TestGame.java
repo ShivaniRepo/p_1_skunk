@@ -29,6 +29,20 @@ public class TestGame {
 		assertEquals("Skunk game has started.", gameStatus);
 		
 	}
+
+	// Test to verify game has ended. 
+	
+	@Test
+	public void test_end_game()
+	{
+		Game newGame = new Game();
+		boolean gameStatus;
+		
+		gameStatus = newGame.endGame();
+		assertTrue(gameStatus == false);
+	}
+	
+	//  Test to ADD Player to Skunk Game. 
 	
 	@Test
 	public void test_game_invalid_player_number_negative()
@@ -37,7 +51,9 @@ public class TestGame {
 		
 		int iReturn = newGame.getNumberOfPlayers(-1);
 		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn);
-		
+
+		newGame.addPlayer("Quan");
+		assertTrue(newGame.getTotalPlayers() == 1);
 	}
 
 	@Test
@@ -53,17 +69,15 @@ public class TestGame {
 		
 		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
 		assertEquals( RETURN_OK, iReturn );
+
+		newGame.addPlayer("Quan");
+		newGame.addPlayer("Shivani");
+		newGame.addPlayer("Ayan");
+		newGame.removePlayers();
+		assertTrue(newGame.getTotalPlayers() == 0);
+
 	}
-	
-	@Test
-	public void test_end_game()
-	{
-		Game newGame = new Game();
-		boolean gameStatus;
-		
-		gameStatus = newGame.endGame();
-		assertTrue(gameStatus == false);
-	}
+}
 
 //	//  Test to ADD Player to Skunk Game. 
 //	
@@ -107,6 +121,4 @@ public class TestGame {
 //		assertNotNull(newGame);
 //
 //	}	
-//	
-}
-
+//
