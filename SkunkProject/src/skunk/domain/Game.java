@@ -95,7 +95,7 @@ public class Game {
 		{
 			//Todo: if string entered is other than integer.
 		}
-    
+	}
 	// Return total players.
 	public int getTotalPlayers()
 	{
@@ -150,6 +150,7 @@ public class Game {
 				//ToDo: empty string entered or just return key hit.
 			}
 		}
+	}
 
 	// Method to REMOVE all Players from Game. 
 
