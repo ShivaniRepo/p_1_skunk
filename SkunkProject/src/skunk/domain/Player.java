@@ -19,18 +19,6 @@ public class Player {
 		this.chipCount = 50;
 		this.playerScore = 0;
 	}
-	
-	public Player(int playerCount, String playerID) {
-		this.playerName = playerID;
-		this.playerNum = playerCount;
-	}
-
-	
-	// Draft - Needs to be updated
-//	public void setPlayer() {
-//		playerName = newGame.getPlayerName();
-//		playerNum = newGame.getNumPlayers();
-//	}
 
 	public String getPlayerName() {
 		return this.playerName;
@@ -44,15 +32,12 @@ public class Player {
 		return this.playerScore;
 	}
 
+	public void setPlayerScore(int x) {
+		this.playerScore = x;
+	}
+	
 	public int getPlayerChipCount() 
 	{
-		//to be added later
-//		if (roll.getDie1Score() == 1 & roll.getDie2Score() == 1) {
-//			this.chipCount = 0;
-//			return this.chipCount;
-//		} else {
-//			return this.chipCount += roll.updateChipCount();
-//		}
 		return this.chipCount;
 	}
 

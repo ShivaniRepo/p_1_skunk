@@ -13,38 +13,56 @@ public class Turn
 	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
 	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
 	private static final int CONSTANT_IS_DOUBLE_SKUNK = -33;
+	
+	
+	
+	
+	private String[] NameOfPlayers;
+	
+	private String playerName;
+	private int playerScore;
+	private int chipCount;
 	private Roll roll;
+	
 	private SkunkUI uiT;
+	public Player p;
 	
 	//**********************************************************
 	
-	public Turn( SkunkUI ui )
+	public Turn()
 	{
 		//StdOut.println("In Turn constructor: ");
 		roll = new Roll();
-	
-		uiT = ui;
+		uiT = new SkunkUI();
 	}
+	
 	
 
 	//**********************************************************
 	
-	public int playTurn()
+	public int playTurn(Player activePlayer, int activePlayerIndex)
 	{
 		int iExitValue = 0;
 		
-		//Add name of active player Todo
-		uiT.printLine( "Starting Turn for player..." );
+		//Add name of active player
 		
-		//Reset the score for the activeplayer. Todo:
+		uiT.printLine("\nPlayer 1's name is: " + activePlayer.getPlayerName());
 		
-		//
+		uiT.printLine("\nStarting Turn for Player 1..." );
+		
+		
 		boolean bGameOver = false;
+		
+		//Sets up the counter for the ChipCount and playerScore
+		chipCount =  activePlayer.getPlayerChipCount();
+		playerScore = activePlayer.getPlayerScore();
 		
 		while( !bGameOver )
 		{
 			//Get player's chooses to roll or decline the roll
 			boolean bWantToPlay = getRollChoice();
+			
+			
 					
 			while( bWantToPlay )
 			{
@@ -58,6 +76,9 @@ public class Turn
 				{
 					uiT.printLine( "isDoubleSkunk" );
 					bGameOver = true;
+					chipCount = chipCount - 4;
+					activePlayer.setPlayerChipCount(chipCount);
+					activePlayer.setPlayerScore(0);
 					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
 					break;
 				}
@@ -65,6 +86,8 @@ public class Turn
 				{
 					uiT.printLine( "isRegularSkunk" );
 					bGameOver = true;
+					chipCount = chipCount - 1;
+					activePlayer.setPlayerChipCount(chipCount);
 					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
 					break;
 				}
@@ -72,14 +95,26 @@ public class Turn
 				{
 					uiT.printLine( "isSkunkDeuce" );
 					bGameOver = true;
+					chipCount = chipCount - 2;
+					activePlayer.setPlayerChipCount(chipCount);
 					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
 					break;
 				}
-				
-				bWantToPlay = getRollChoice();
+				else 
+				{
+					playerScore += iValue;
+					activePlayer.setPlayerScore(playerScore);
+					//uiT.printLine ("Player's turn score is: " +Integer.toString(playerScore));
+				}
 				
 				//Set the scores for this turn
 				//Adjust chips for penalty.
+				uiT.printLine("\nPlayer 1's turn score is: " + Integer.toString(playerScore));
+				uiT.printLine("Player 1's current chipcount is: "+ activePlayer.getPlayerChipCount());
+				
+				bWantToPlay = getRollChoice();
+				
+				
 			}
 			
 			if( !bWantToPlay )
@@ -92,10 +127,13 @@ public class Turn
 		}
 		
 		//End of the turn...
-		//Todo:
 		//Set the scores for this turn
 		//Adjust chips for penalty. 
-				
+		uiT.printLine("\nThe Turn Summary is as follows: ");
+		uiT.printLine("Player 1's name is: " + activePlayer.getPlayerName());
+		uiT.printLine("Player 1's overall chipcount is: "+ activePlayer.getPlayerChipCount());
+		uiT.printLine("Player 1's overall score is "+ activePlayer.getPlayerScore());	
+		
 		return iExitValue;
 	}
 	
@@ -103,7 +141,7 @@ public class Turn
 	
 	public boolean getRollChoice()
 	{
-		String szUserResp = uiT.printLineReadResponse("Do you want to roll? y or n");
+		String szUserResp = uiT.printLineReadResponse("\nDo you want to roll? y or n");
 		szUserResp.trim();
 		
 		boolean bUserResp = ( szUserResp.toLowerCase().charAt(0) == 'y' );
@@ -114,3 +152,4 @@ public class Turn
 	
 	//**********************************************************
 }
+

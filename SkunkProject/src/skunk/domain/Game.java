@@ -13,8 +13,9 @@ public class Game {
 
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
-//	private ArrayList<Player> totalPlayers = new ArrayList();
-
+	private ArrayList<Player> totalPlayers = new ArrayList();
+	
+	public ArrayList<Player> players;
 	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
@@ -24,15 +25,19 @@ public class Game {
 	private SkunkUI ui;
 	private Turn turn;
 	
+	public Player activePlayer;
+	public int activePlayerIndex;
+	
 	// Game Constructor 
 	public Game() 
 	{
 		ui = new SkunkUI();
-		turn = new Turn(ui);
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
+		this.players = new ArrayList<Player>();
+		turn = new Turn();
 	}
 
-	private ArrayList<Player> totalPlayers = new ArrayList();
+	
 	
 	public String getGameStatus()
 	{
@@ -64,6 +69,8 @@ public class Game {
 		
 		// If the number of players entered in invalid, try again.
 		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
+	
+		
 		while( iStatus < 0 ) 
 		{
 			askAndParse_NumberOfPlayers();
@@ -76,7 +83,9 @@ public class Game {
 		//For P1.2: Just one Player.
 		//One complete interactive turn of skunk with one human player.
 		
-		iStatus = turn.playTurn();
+		activePlayerIndex = 0;		
+		iStatus = turn.playTurn(players.get(activePlayerIndex), activePlayerIndex);
+		
 		ui.printLine( "Turn is OVER." );
 		
 		return true;
@@ -96,6 +105,7 @@ public class Game {
 			//Todo: if string entered is other than integer.
 		}
 	}
+	
 	// Return total players.
 	public int getTotalPlayers()
 	{
@@ -105,8 +115,7 @@ public class Game {
 	}
 
 	// Method to add Player to Game. 
-	public void addPlayer(String string) 
-	
+	public void addPlayer(String string) 	
 	{
 		Player player = new Player(string);
 		totalPlayers.add(player);
@@ -121,11 +130,14 @@ public class Game {
 
 	public int getNumberOfPlayers(int iNumOfPlayers)
 	{
+		
+		
 		if( iNumOfPlayers <= 0 )
 		{
 			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
 			return ERROR_INVALID_PLAYER_NUMBER;
 		}
+		
 
 		return 0;
 	}
@@ -144,6 +156,7 @@ public class Game {
 			{
 				strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
 				this.NameOfPlayers[iii] = strTemp;
+				this.players.add(new Player(strTemp));
 			}
 			catch( Exception e )
 			{
