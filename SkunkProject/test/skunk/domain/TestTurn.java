@@ -73,13 +73,19 @@ public class TestTurn
 	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	assertTrue( iExitValue == SkunkConstant.CONSTANT_IS_DOUBLE_SKUNK );
+	 	assertEquals( iExitValue, SkunkConstant.CONSTANT_IS_DOUBLE_SKUNK );
 	}
 	
 	@Test
 	public void test_turn_playTurn_skunk_deuce() 
 	{
-		fail();
+		Turn testTurn = null;
+	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, 3 );
+	
+	 	Player testPlayer = new Player("Amy");
+	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
+	 	
+	 	assertEquals( iExitValue, SkunkConstant.CONSTANT_IS_SKUNK_DEUCE );
 	}
 	
 }
