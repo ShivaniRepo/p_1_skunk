@@ -44,7 +44,7 @@ public class TestTurn
 		Turn testTurn = null;
 	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, CONSTANT_DUMMY );
 	
-	 	Player testPlayer = new Player("test");
+	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
 	 	assertTrue(iExitValue == -11 || iExitValue == -22 || iExitValue == -33 );
@@ -57,7 +57,7 @@ public class TestTurn
 		Turn testTurn = null;
 	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY, CONSTANT_DUMMY );
 	
-	 	Player testPlayer = new Player("test");
+	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
 	 	assertTrue(iExitValue == -44 );
@@ -65,9 +65,17 @@ public class TestTurn
 	
 	
 	@Test
-	public void test_turn_playTurn_regular_skunk() 
+	public void test_turn_playTurn_double_skunk() 
 	{
 		fail();
-		
+		Turn testTurn = null;
+	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, 2 );
+	
+	 	Player testPlayer = new Player("Amy");
+	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
+	 	
+	 	assertTrue( iExitValue == SkunkConstant.CONSTANT_IS_DOUBLE_SKUNK );
 	}
+	
+
 }

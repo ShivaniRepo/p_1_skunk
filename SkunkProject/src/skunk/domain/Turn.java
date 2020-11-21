@@ -82,6 +82,7 @@ public class Turn
 					
 					chipCount -= CONSTANT_PENALTY_DOUBLE_SKUNK_4;
 					activePlayer.setPlayerChipCount(chipCount);
+					
 					activePlayer.setPlayerScore(0);
 					
 					break;
@@ -90,8 +91,8 @@ public class Turn
 				{
 					uiT.printLine( "*** its a regular Skunk." );
 					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
-					
 					bGameOver = true;
+					
 					chipCount = chipCount - CONSTANT_PENALTY_REGULAR_SKUNK_1;
 					activePlayer.setPlayerChipCount(chipCount);
 					
@@ -102,6 +103,7 @@ public class Turn
 					uiT.printLine( "*** its a SkunkDeuce." );
 					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
 					bGameOver = true;
+					
 					chipCount = chipCount - CONSTANT_PENALTY_SKUNK_DEUCE_2;
 					activePlayer.setPlayerChipCount(chipCount);
 					

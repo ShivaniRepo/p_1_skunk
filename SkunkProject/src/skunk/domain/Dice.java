@@ -61,7 +61,6 @@ public class Dice
 	{
 		// Roll each of die1, die2, sum their last rolls,
 		// then set Dice.lastRoll to this value
-		//StdOut.println("Dice constructor, actual roll of two die");
 		this.die1.roll();
 		this.die2.roll();
 		this.lastRoll = this.die1.getLastRoll() + this.die2.getLastRoll();
