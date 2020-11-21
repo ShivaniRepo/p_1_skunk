@@ -1,7 +1,7 @@
 package skunk.domain;
 
+import skunk.domain.SkunkConstant.Constant;
 
-//import edu.princeton.cs.introcs.StdOut;
 
 //**********************************************************
 //Turn: Series or multiple rolls until skunk or user decline to rolls
@@ -10,23 +10,13 @@ package skunk.domain;
 
 public class Turn
 {
-	private static final int CONSTANT_PENALTY_SKUNK_DEUCE_2 = 2;
-	private static final int CONSTANT_PENALTY_REGULAR_SKUNK_1 = 1;
-	private static final int CONSTANT_PENALTY_DOUBLE_SKUNK_4 = 4;
-	private static final int CONSTANT_PLAYER_DECLINED_ROLL = -44;
-	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
-	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
-	private static final int CONSTANT_IS_DOUBLE_SKUNK = -33;
-	
-	
-	
-	
 	private int playerScore;
 	private int chipCount;
 	private Roll roll;
 	private int iCalledFrom;
 	
 	private SkunkUI uiT;
+	public SkunkConstant sk;
 	public Player p;
 	
 	//**********************************************************
@@ -76,32 +66,32 @@ public class Turn
 				//Check for double skunk before regular skunk
 				if( roll.isDoubleSkunk() )
 				{
-					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
+					iExitValue = Constant.CONSTANT_IS_DOUBLE_SKUNK;
 					bGameOver = true;
 					
-					chipCount = chipCount - CONSTANT_PENALTY_DOUBLE_SKUNK_4;
+					chipCount -= Constant.CONSTANT_PENALTY_DOUBLE_SKUNK_4;
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					activePlayer.setPlayerScore(0);
 					
 					break;
 				}
-				else if( roll.isRegularSkunk() )
+				else if( roll.isSkunkDeuce() )
 				{
-					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
+					iExitValue = Constant.CONSTANT_IS_SKUNK_DEUCE;
 					bGameOver = true;
 					
-					chipCount = chipCount - CONSTANT_PENALTY_REGULAR_SKUNK_1;
+					chipCount -= Constant.CONSTANT_PENALTY_SKUNK_DEUCE_2;
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					break;
 				}
-				else if( roll.isSkunkDeuce() )
+				else if( roll.isRegularSkunk() )
 				{
-					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
+					iExitValue = Constant.CONSTANT_IS_REGULAR_SKUNK;
 					bGameOver = true;
 					
-					chipCount = chipCount - CONSTANT_PENALTY_SKUNK_DEUCE_2;
+					chipCount -= Constant.CONSTANT_PENALTY_REGULAR_SKUNK_1;
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					break;
@@ -120,7 +110,7 @@ public class Turn
 			if( !bWantToPlay )
 			{
 				bGameOver = true;
-				iExitValue = CONSTANT_PLAYER_DECLINED_ROLL;
+				iExitValue = Constant.CONSTANT_PLAYER_DECLINED_ROLL;
 				break;
 			}
 		}
@@ -161,16 +151,16 @@ public class Turn
 		
 		switch( iExitValue)
 		{
-		case CONSTANT_IS_REGULAR_SKUNK:
+		case Constant.CONSTANT_IS_REGULAR_SKUNK:
 			strTemp = "of Regular skunk.";
 			break;
-		case CONSTANT_IS_DOUBLE_SKUNK:
+		case Constant.CONSTANT_IS_DOUBLE_SKUNK:
 			strTemp = "of double skunk.";
 			break;
-		case CONSTANT_IS_SKUNK_DEUCE:
+		case Constant.CONSTANT_IS_SKUNK_DEUCE:
 			strTemp = "of skunk and a deuce.";
 			break;
-		case CONSTANT_PLAYER_DECLINED_ROLL:
+		case Constant.CONSTANT_PLAYER_DECLINED_ROLL:
 			strTemp = "player declined roll.";
 			break;
 		}
@@ -183,11 +173,11 @@ public class Turn
 	{
 		boolean bUserResp = false;
 		
-		if( this.iCalledFrom == 1 )
+		if( this.iCalledFrom == Constant.CONSTANT_PLAYER_WANTS_TO_PLAY )
 		{
 			bUserResp = true;
 		}
-		else if( this.iCalledFrom == 2 )
+		else if( this.iCalledFrom == Constant.CONSTANT_PLAYER_DECLINED_TO_PLAY )
 		{
 			bUserResp = false;
 		}

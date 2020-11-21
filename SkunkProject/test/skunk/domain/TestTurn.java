@@ -3,25 +3,24 @@ package skunk.domain;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
+import skunk.domain.SkunkConstant.Constant;
 
+//**********************************************************
 
 public class TestTurn 
 {
-	private static final int CONSTANT_DUMMY = 0;
-	private static final int CONSTANT_PLAYER_DECLINED_TO_PLAY = 2;
-	private static final int CONSTANT_PLAYER_WANTS_TO_PLAY = 1;
+	//local file constants.
+	static final int CONSTANT_DIE_VALUE_3 = 3;
+	static final int CONSTANT_DIE_VALUE_2 = 2;
 	
-	
-	private SkunkConstant c;
 	
 	@Test
 	public void test_turn_roll_getRollChoice_true()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( 1, CONSTANT_PLAYER_WANTS_TO_PLAY );
+	 	testTurn = new Turn( 1, Constant.CONSTANT_PLAYER_WANTS_TO_PLAY );
 	
 	 	boolean bRollChoice = testTurn.getRollChoice();
 	 	assertTrue( bRollChoice );
@@ -31,7 +30,7 @@ public class TestTurn
 	public void test_turn_roll_getRollChoice_false()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY, CONSTANT_DUMMY );
+	 	testTurn = new Turn( Constant.CONSTANT_PLAYER_DECLINED_TO_PLAY, Constant.CONSTANT_DUMMY );
 	
 	 	boolean bRollChoice = testTurn.getRollChoice();
 	 	assertFalse( bRollChoice );
@@ -42,12 +41,14 @@ public class TestTurn
 	public void test_turn_roll_playTurn_true()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, CONSTANT_DUMMY );
+	 	testTurn = new Turn( Constant.CONSTANT_PLAYER_WANTS_TO_PLAY, Constant.CONSTANT_DUMMY );
 	
 	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	assertTrue(iExitValue == -11 || iExitValue == -22 || iExitValue == -33 );
+	 	assertTrue(iExitValue == Constant.CONSTANT_IS_REGULAR_SKUNK || 
+	 			iExitValue == Constant.CONSTANT_IS_DOUBLE_SKUNK || 
+	 			iExitValue == Constant.CONSTANT_IS_SKUNK_DEUCE );
 	}
 	
 	
@@ -55,12 +56,12 @@ public class TestTurn
 	public void test_turn_roll_playTurn_false()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY, CONSTANT_DUMMY );
+	 	testTurn = new Turn( Constant.CONSTANT_PLAYER_DECLINED_TO_PLAY, Constant.CONSTANT_DUMMY );
 	
 	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	assertTrue(iExitValue == -44 );
+	 	assertTrue(iExitValue == Constant.CONSTANT_PLAYER_DECLINED_ROLL );
 	}
 	
 	
@@ -68,24 +69,24 @@ public class TestTurn
 	public void test_turn_playTurn_double_skunk() 
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, 2 );
+	 	testTurn = new Turn( Constant.CONSTANT_PLAYER_WANTS_TO_PLAY, CONSTANT_DIE_VALUE_2 );
 	
 	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	assertEquals( iExitValue, SkunkConstant.CONSTANT_IS_DOUBLE_SKUNK );
+	 	assertEquals( iExitValue, Constant.CONSTANT_IS_DOUBLE_SKUNK );
 	}
 	
 	@Test
 	public void test_turn_playTurn_skunk_deuce() 
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, 3 );
+	 	testTurn = new Turn( Constant.CONSTANT_PLAYER_WANTS_TO_PLAY, CONSTANT_DIE_VALUE_3 );
 	
 	 	Player testPlayer = new Player("Amy");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	assertEquals( iExitValue, SkunkConstant.CONSTANT_IS_SKUNK_DEUCE );
+	 	assertEquals( iExitValue, Constant.CONSTANT_IS_SKUNK_DEUCE );
 	}
 	
 }
