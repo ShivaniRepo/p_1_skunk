@@ -67,7 +67,6 @@ public class TestTurn
 	@Test
 	public void test_turn_playTurn_double_skunk() 
 	{
-		fail();
 		Turn testTurn = null;
 	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, 2 );
 	
