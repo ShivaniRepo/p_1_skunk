@@ -37,7 +37,7 @@ public class Game
 		ui = new SkunkUI();
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
 		this.players = new ArrayList<Player>();
-		turn = new Turn( 0 );
+		turn = new Turn( );
 	}
 
 	

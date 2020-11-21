@@ -10,6 +10,7 @@ import org.junit.Test;
 
 public class TestTurn 
 {
+	private static final int CONSTANT_DUMMY = 0;
 	private static final int CONSTANT_PLAYER_DECLINED_TO_PLAY = 2;
 	private static final int CONSTANT_PLAYER_WANTS_TO_PLAY = 1;
 	
@@ -20,7 +21,7 @@ public class TestTurn
 	public void test_turn_roll_getRollChoice_true()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY );
+	 	testTurn = new Turn( 1, CONSTANT_PLAYER_WANTS_TO_PLAY );
 	
 	 	boolean bRollChoice = testTurn.getRollChoice();
 	 	assertTrue( bRollChoice );
@@ -30,7 +31,7 @@ public class TestTurn
 	public void test_turn_roll_getRollChoice_false()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY );
+	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY, CONSTANT_DUMMY );
 	
 	 	boolean bRollChoice = testTurn.getRollChoice();
 	 	assertFalse( bRollChoice );
@@ -41,13 +42,12 @@ public class TestTurn
 	public void test_turn_roll_playTurn_true()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY );
+	 	testTurn = new Turn( CONSTANT_PLAYER_WANTS_TO_PLAY, CONSTANT_DUMMY );
 	
 	 	Player testPlayer = new Player("test");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
-	 	//List ExitCodeList = Array.asList( -11, -22, -33);
-	 	assertTrue(iExitValue <= -11 && iExitValue >= -33 );
+	 	assertTrue(iExitValue == -11 || iExitValue == -22 || iExitValue == -33 );
 	}
 	
 	
@@ -55,11 +55,19 @@ public class TestTurn
 	public void test_turn_roll_playTurn_false()
 	{
 		Turn testTurn = null;
-	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY );
+	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY, CONSTANT_DUMMY );
 	
 	 	Player testPlayer = new Player("test");
 	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
 	 	
 	 	assertTrue(iExitValue == -44 );
+	}
+	
+	
+	@Test
+	public void test_turn_playTurn_regular_skunk() 
+	{
+		fail();
+		
 	}
 }

@@ -27,19 +27,24 @@ public class Turn
 	private int iCalledFrom;
 	
 	private SkunkUI uiT;
-	private SkunkConstant constant;
-	
 	public Player p;
 	
 	//**********************************************************
 	
-	public Turn( int iCall )
+	public Turn()
 	{
 		roll = new Roll();
 		uiT = new SkunkUI();
-		this.iCalledFrom =  iCall;
 	}
 	
+	//**********************************************************
+	
+	public Turn( int iCallFrom, int iTestDieValue )
+	{
+		uiT = new SkunkUI();
+		roll = new Roll( uiT, iCallFrom, iTestDieValue );
+		this.iCalledFrom =  iCallFrom;
+	}
 	
 	//**********************************************************
 	
@@ -49,7 +54,6 @@ public class Turn
 		
 		//Add name of active player
 		uiT.printLine("\nStarting Turn for " + activePlayer.playerName );
-		
 		
 		boolean bGameOver = false;
 		
