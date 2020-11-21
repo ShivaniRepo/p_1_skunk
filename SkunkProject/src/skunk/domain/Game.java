@@ -1,6 +1,8 @@
 package skunk.domain;
 
 
+import java.io.InputStreamReader;
+
 //import java.util.ArrayList;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class Game
 		ui = new SkunkUI();
 		this.NameOfPlayers = new String[CONSTANT_MAX_NUMBER_PLAYERS];
 		this.players = new ArrayList<Player>();
-		turn = new Turn();
+		turn = new Turn( 0 );
 	}
 
 	
@@ -95,7 +97,7 @@ public class Game
 	public void askAndParse_NumberOfPlayers() 
 	{
 		String strTemp;
-		ui.printLine( "*****" );
+		//ui.printLine( "*****" );
 		try
 		{
 			strTemp = ui.printLineReadResponse( "Enter number of players?" );
