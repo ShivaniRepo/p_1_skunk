@@ -76,7 +76,6 @@ public class Turn
 				//Check for double skunk before regular skunk
 				if( roll.isDoubleSkunk() )
 				{
-					//uiT.printLine( "*** its double Skunk." );
 					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
 					bGameOver = true;
 					
@@ -89,7 +88,6 @@ public class Turn
 				}
 				else if( roll.isRegularSkunk() )
 				{
-					//uiT.printLine( "*** its a regular Skunk." );
 					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
 					bGameOver = true;
 					
@@ -100,7 +98,6 @@ public class Turn
 				}
 				else if( roll.isSkunkDeuce() )
 				{
-					//uiT.printLine( "*** its a SkunkDeuce." );
 					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
 					bGameOver = true;
 					
@@ -122,7 +119,6 @@ public class Turn
 			
 			if( !bWantToPlay )
 			{
-				uiT.printLine( "Player declined the roll." );
 				bGameOver = true;
 				iExitValue = CONSTANT_PLAYER_DECLINED_ROLL;
 				break;
@@ -200,7 +196,17 @@ public class Turn
 			String szUserResp = uiT.printLineReadResponse("\nDo you want to roll? y or n");
 			szUserResp.trim();
 			
-			bUserResp = ( szUserResp.toLowerCase().charAt(0) == 'y' );
+			char chResp = szUserResp.toLowerCase().charAt(0);
+			
+			if( chResp == 'y' )
+				bUserResp = true;
+			else if( chResp == 'n' )
+				bUserResp = false;
+			else
+			{
+				uiT.printLine("invalid response.");
+				bUserResp = false;
+			}
 		}
 		
 		return bUserResp;
