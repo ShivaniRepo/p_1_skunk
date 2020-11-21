@@ -29,18 +29,12 @@ public class TestTurn
 	@Test
 	public void test_turn_roll_getRollChoice_false()
 	{
-		fail();
-		
 		Turn testTurn = null;
 	 	testTurn = new Turn( 2 );
 	
 	 	boolean bRollChoice = testTurn.getRollChoice();
 	 	assertFalse( bRollChoice );
-	 	
-		//Player testPlayer = new Player("test");
-		//testTurn.playTurn(testPlayer, 0 );
-		//StdOut.println( 'y' );
-		
+	
 	}
 	
 }
