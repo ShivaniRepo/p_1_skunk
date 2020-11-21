@@ -76,11 +76,11 @@ public class Turn
 				//Check for double skunk before regular skunk
 				if( roll.isDoubleSkunk() )
 				{
-					uiT.printLine( "*** its double Skunk." );
+					//uiT.printLine( "*** its double Skunk." );
 					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
 					bGameOver = true;
 					
-					chipCount -= CONSTANT_PENALTY_DOUBLE_SKUNK_4;
+					chipCount = chipCount - CONSTANT_PENALTY_DOUBLE_SKUNK_4;
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					activePlayer.setPlayerScore(0);
@@ -89,7 +89,7 @@ public class Turn
 				}
 				else if( roll.isRegularSkunk() )
 				{
-					uiT.printLine( "*** its a regular Skunk." );
+					//uiT.printLine( "*** its a regular Skunk." );
 					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
 					bGameOver = true;
 					
@@ -100,7 +100,7 @@ public class Turn
 				}
 				else if( roll.isSkunkDeuce() )
 				{
-					uiT.printLine( "*** its a SkunkDeuce." );
+					//uiT.printLine( "*** its a SkunkDeuce." );
 					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
 					bGameOver = true;
 					
@@ -116,9 +116,7 @@ public class Turn
 				}
 				
 				//Set the scores for this turn, adjust chips for penalty.
-				uiT.printLine("\nPlayer " + ( activePlayer.playerNum + 1) + "\'s turn score is: " + Integer.toString(playerScore));
-				uiT.printLine("Player " + ( activePlayer.playerNum + 1) + "\'s current chipcount is: "+ activePlayer.getPlayerChipCount());
-				
+				printScore( activePlayer );
 				bWantToPlay = getRollChoice();
 			}
 			
@@ -134,10 +132,9 @@ public class Turn
 		String strExitReason = getReasonForExit( iExitValue );
 		
 		//End of the turn...
-		//Set the scores for this turn, adjust chips for penalty. 
-		uiT.printLine("Game ended for " + activePlayer.playerName + " because " + strExitReason );
-		uiT.printLine("Player " + ( activePlayer.playerNum + 1) +  " overall chipcount is: " + activePlayer.getPlayerChipCount());
-		uiT.printLine("Player " + ( activePlayer.playerNum + 1) +  " overall score is: "+ activePlayer.getPlayerScore());	
+		//Set the scores for this turn, adjust chips for penalty.
+		uiT.printLine("\nGame ended for " + activePlayer.playerName + " because ***" + strExitReason );
+		printOverAllScore( activePlayer );
 		
 		return iExitValue;
 	}
@@ -146,6 +143,22 @@ public class Turn
 
 	//**********************************************************
 
+	private void printScore(Player aPlayer) 
+	{
+		uiT.printLine("\nPlayer " + ( aPlayer.playerNum + 1) +": "+ aPlayer.playerName + "\'s turn score is: " + Integer.toString(playerScore));
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1)  +": "+ aPlayer.playerName +  "\'s current chipcount is: "+ aPlayer.getPlayerChipCount());
+	}
+
+	//**********************************************************
+
+	private void printOverAllScore( Player aPlayer ) 
+	{
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall score is: "+ aPlayer.getPlayerScore());
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall chipcount is: " + aPlayer.getPlayerChipCount());
+	}
+
+	//**********************************************************
+	
 	public String getReasonForExit(int iExitValue) 
 	{
 		String strTemp = "Unknown";
