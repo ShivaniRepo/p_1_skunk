@@ -16,7 +16,6 @@ public class Roll
 	public Roll()
 	{
 		ui1 = new SkunkUI();
-		//ui1.printLine( "In Roll constructor: ");
 		dice = new Dice();
 	}
 

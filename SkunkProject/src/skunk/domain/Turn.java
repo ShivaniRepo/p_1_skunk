@@ -10,6 +10,9 @@ package skunk.domain;
 
 public class Turn
 {
+	private static final int CONSTANT_PENALTY_SKUNK_DEUCE_2 = 2;
+	private static final int CONSTANT_PENALTY_REGULAR_SKUNK_1 = 1;
+	private static final int CONSTANT_PENALTY_DOUBLE_SKUNK_4 = 4;
 	private static final int CONSTANT_PLAYER_DECLINED_ROLL = -44;
 	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
 	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
@@ -18,15 +21,14 @@ public class Turn
 	
 	
 	
-	//private String[] NameOfPlayers;
-	
-	//private String playerName;
 	private int playerScore;
 	private int chipCount;
 	private Roll roll;
 	private int iCalledFrom;
 	
 	private SkunkUI uiT;
+	private SkunkConstant constant;
+	
 	public Player p;
 	
 	//**********************************************************
@@ -41,7 +43,7 @@ public class Turn
 	
 	//**********************************************************
 	
-	public int playTurn(Player activePlayer, int activePlayerIndex)
+	public int playTurn( Player activePlayer, int activePlayerIndex )
 	{
 		int iExitValue = 0;
 		
@@ -52,7 +54,7 @@ public class Turn
 		boolean bGameOver = false;
 		
 		//Sets up the counter for the ChipCount and playerScore
-		chipCount =  activePlayer.getPlayerChipCount();
+		chipCount = activePlayer.getPlayerChipCount();
 		playerScore = activePlayer.getPlayerScore();
 		
 		while( !bGameOver )
@@ -71,46 +73,47 @@ public class Turn
 				if( roll.isDoubleSkunk() )
 				{
 					uiT.printLine( "*** its double Skunk." );
+					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
 					bGameOver = true;
-					chipCount = chipCount - 4;
+					
+					chipCount -= CONSTANT_PENALTY_DOUBLE_SKUNK_4;
 					activePlayer.setPlayerChipCount(chipCount);
 					activePlayer.setPlayerScore(0);
-					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
+					
 					break;
 				}
 				else if( roll.isRegularSkunk() )
 				{
 					uiT.printLine( "*** its a regular Skunk." );
-					bGameOver = true;
-					chipCount = chipCount - 1;
-					activePlayer.setPlayerChipCount(chipCount);
 					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
+					
+					bGameOver = true;
+					chipCount = chipCount - CONSTANT_PENALTY_REGULAR_SKUNK_1;
+					activePlayer.setPlayerChipCount(chipCount);
+					
 					break;
 				}
 				else if( roll.isSkunkDeuce() )
 				{
 					uiT.printLine( "*** its a SkunkDeuce." );
-					bGameOver = true;
-					chipCount = chipCount - 2;
-					activePlayer.setPlayerChipCount(chipCount);
 					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
+					bGameOver = true;
+					chipCount = chipCount - CONSTANT_PENALTY_SKUNK_DEUCE_2;
+					activePlayer.setPlayerChipCount(chipCount);
+					
 					break;
 				}
 				else 
 				{
 					playerScore += iValue;
 					activePlayer.setPlayerScore(playerScore);
-					//uiT.printLine ("Player's turn score is: " +Integer.toString(playerScore));
 				}
 				
-				//Set the scores for this turn
-				//Adjust chips for penalty.
-				uiT.printLine("\nPlayer 1's turn score is: " + Integer.toString(playerScore));
-				uiT.printLine("Player 1's current chipcount is: "+ activePlayer.getPlayerChipCount());
+				//Set the scores for this turn, adjust chips for penalty.
+				uiT.printLine("\nPlayer " + ( activePlayer.playerNum + 1) + "\'s turn score is: " + Integer.toString(playerScore));
+				uiT.printLine("Player " + ( activePlayer.playerNum + 1) + "\'s current chipcount is: "+ activePlayer.getPlayerChipCount());
 				
 				bWantToPlay = getRollChoice();
-				
-				
 			}
 			
 			if( !bWantToPlay )
@@ -136,7 +139,15 @@ public class Turn
 	
 	//**********************************************************
 	
-	private String getReasonForExit(int iExitValue) 
+	public void update_score_chip_doubleSkunk( Player activePlayer )
+	{
+
+	}
+	
+	
+	//**********************************************************
+
+	public String getReasonForExit(int iExitValue) 
 	{
 		String strTemp = "Unknown";
 		
