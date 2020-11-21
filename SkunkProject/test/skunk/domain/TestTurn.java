@@ -37,4 +37,12 @@ public class TestTurn
 	
 	}
 	
+	@Test
+	public void test_turn_roll_playTurn_true()
+	{
+		fail();
+	 	
+	 	
+	}
+	
 }
