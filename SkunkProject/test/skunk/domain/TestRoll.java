@@ -21,7 +21,7 @@ public class TestRoll
 		int iTotal = roll.getLastRollValue();
 		StdOut.println("iTotal: " + iTotal );
 		
-		assertTrue( iTotal < 12 );
+		assertTrue( iTotal <= 12 );
 	}
 	
 	//@Test

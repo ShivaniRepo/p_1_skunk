@@ -137,14 +137,7 @@ public class Turn
 	}
 	
 	
-	//**********************************************************
-	
-	public void update_score_chip_doubleSkunk( Player activePlayer )
-	{
 
-	}
-	
-	
 	//**********************************************************
 
 	public String getReasonForExit(int iExitValue) 

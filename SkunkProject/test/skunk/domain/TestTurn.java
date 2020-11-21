@@ -54,6 +54,12 @@ public class TestTurn
 	@Test
 	public void test_turn_roll_playTurn_false()
 	{
-		fail();
+		Turn testTurn = null;
+	 	testTurn = new Turn( CONSTANT_PLAYER_DECLINED_TO_PLAY );
+	
+	 	Player testPlayer = new Player("test");
+	 	int iExitValue = testTurn.playTurn( testPlayer, 0 );
+	 	
+	 	assertTrue(iExitValue == -44 );
 	}
 }
