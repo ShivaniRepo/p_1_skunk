@@ -6,7 +6,8 @@ package skunk.domain;
 import java.util.ArrayList;
 
 
-public class Game {
+public class Game 
+{
 	
 	private boolean StartGame = false;
 	private boolean EndGame = false;

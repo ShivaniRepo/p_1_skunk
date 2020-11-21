@@ -1,6 +1,7 @@
 package skunk.domain;
 
-public class Player {
+public class Player 
+{
 
 	private int chipCount;
 	private int playerScore;
@@ -20,19 +21,23 @@ public class Player {
 		this.playerScore = 0;
 	}
 
-	public String getPlayerName() {
+	public String getPlayerName() 
+	{
 		return this.playerName;
 	}
 
-	public int getPlayerNum() {
+	public int getPlayerNum() 
+	{
 		return this.playerNum;
 	}
 	
-	public int getPlayerScore() {
+	public int getPlayerScore() 
+	{
 		return this.playerScore;
 	}
 
-	public void setPlayerScore(int x) {
+	public void setPlayerScore(int x) 
+	{
 		this.playerScore = x;
 	}
 	
