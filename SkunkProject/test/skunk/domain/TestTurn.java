@@ -2,15 +2,8 @@ package skunk.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.awt.Component;
-import java.awt.List;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -57,4 +50,10 @@ public class TestTurn
 	 	assertTrue(iExitValue <= -11 && iExitValue >= -33 );
 	}
 	
+	
+	@Test
+	public void test_turn_roll_playTurn_false()
+	{
+		fail();
+	}
 }
