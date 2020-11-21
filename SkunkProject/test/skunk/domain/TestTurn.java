@@ -76,5 +76,10 @@ public class TestTurn
 	 	assertTrue( iExitValue == SkunkConstant.CONSTANT_IS_DOUBLE_SKUNK );
 	}
 	
-
+	@Test
+	public void test_turn_playTurn_skunk_deuce() 
+	{
+		fail();
+	}
+	
 }
