@@ -1,14 +1,10 @@
 package skunk.domain;
 
-//import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-//import static org.junit.Assert.fail;
-
-//import java.util.Random;
-
+import static org.junit.Assert.fail;
 import org.junit.Test;
-
 import edu.princeton.cs.introcs.StdOut;
+
 
 public class TestRoll 
 {
@@ -24,24 +20,11 @@ public class TestRoll
 		assertTrue( iTotal <= 12 );
 	}
 	
-	//@Test
-	//public void test_Roll_isSkunk()
-	//{
-		//fail();
-	//	boolean bb;
-		
-	//	Roll roll =  new Roll();
-	//	Random rand = new Random();
-		
-	//	Dice dice = new Dice();
-	//	dice.getPointerDie1().setLastRoll(1);
-	//	dice.getPointerDie2().setLastRoll( ( rand.nextInt(4) + 2 ) );
-		
-	//	bb = roll.isRegularSkunk();
-		
-	//	assertTrue(bb);
-	//}
-	
+	@Test
+	public void test_get_iRollTotal()
+	{
+		fail();
+	}
 	
 	
 }
