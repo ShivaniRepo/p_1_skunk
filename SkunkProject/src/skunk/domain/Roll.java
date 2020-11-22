@@ -7,17 +7,31 @@ package skunk.domain;
 
 public class Roll
 {
+	private static final int CONSTANT_REGULAR_GAME = 0;
+	
+	
 	private Dice dice;
 	private int iRollTotal;
 	private SkunkUI ui1;
+	private int iTestCall = 0;
+	private int iTestDieValue = 0;
 	
 	//**********************************************************
 	
 	public Roll()
 	{
 		ui1 = new SkunkUI();
-		//ui1.printLine( "In Roll constructor: ");
 		dice = new Dice();
+	}
+
+	//**********************************************************
+	
+	public Roll( SkunkUI ui, int iTestCall, int iTestDieValue )
+	{
+		ui1 = ui;
+		dice = new Dice();
+		this.iTestCall = iTestCall;
+		this.iTestDieValue = iTestDieValue;
 	}
 
 	//**********************************************************
@@ -33,8 +47,17 @@ public class Roll
 	
 	public int getLastRollValue() 
 	{
-		int iValue = dice.getLastRoll();
-		dice.toString();
+		int iValue = 0;
+		
+		if( this.iTestCall == CONSTANT_REGULAR_GAME )
+		{
+			iValue = dice.getLastRoll();
+			dice.toString();
+		}
+		else
+		{
+			iValue = this.iTestDieValue;
+		}
 		
 		set_iRollTotal( iValue);
 		return iValue;
@@ -47,6 +70,8 @@ public class Roll
 		return iRollTotal;
 	}
 
+	//**********************************************************
+	
 	public void set_iRollTotal(int iRollTotal) 
 	{
 		this.iRollTotal = iRollTotal;
@@ -59,21 +84,16 @@ public class Roll
 		int iDie1 = dice.getPointerDie1().getLastRoll();
 		int iDie2 = dice.getPointerDie2().getLastRoll();
 		
-		//if( ( dice.getPointerDie1().getLastRoll() == 1 ) ||
-		//		( dice.getPointerDie2().getLastRoll() == 1 ) )
 		if( iDie1 == 1 && iDie2 == 1)
 		{
-			//ui1.printLine( "isRegularSkunk: false1 " + iDie1 + " " + iDie2);
 			return false;
 		}
 		else if( iDie1 == 1 || iDie2 == 1)
 		{
-			//ui1.printLine( "isRegularSkunk: true "+ iDie1 + " " + iDie2);
 			return true;
 		}
 		else
 		{
-			//ui1.printLine( "isRegularSkunk: false2 "+ iDie1 + " " + iDie2);
 			return false;
 		}
 		

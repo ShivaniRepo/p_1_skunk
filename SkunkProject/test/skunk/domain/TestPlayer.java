@@ -46,5 +46,13 @@ public class TestPlayer
 		player1.setPlayerChipCount(5);
 		assertTrue(player1.getPlayerChipCount() == 5);
 	}
+	
+	// Test to test get Number of Player method
+	@Test
+	public void testgetPlayerNum()
+	{
+		Player player = new Player();
+		assertEquals("testPlayer", 0, player.getPlayerNum());
+	}
 
 }

@@ -1,5 +1,3 @@
-// Added in comment
-
 package skunk.domain;
 import edu.princeton.cs.introcs.StdOut;
 

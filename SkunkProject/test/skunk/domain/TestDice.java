@@ -4,7 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDice {
+public class TestDice 
+{
 	
 	@Test
 	public void test_Dice_Roll_Value() 
@@ -14,4 +15,15 @@ public class TestDice {
 		assertTrue(dice.getLastRoll() >= 2 && dice.getLastRoll() <= 12);
 	}
 
+	@Test
+	public void test_Dice_main()
+	{
+		//fail();
+		
+		String[] args = { "empty" }; 
+		
+		Dice.main(args);
+		
+		assertEquals( "Dice class counting double skunk count in simulation.", args[0]);
+	}
 }

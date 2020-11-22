@@ -1,6 +1,7 @@
 package skunk.domain;
 
-import edu.princeton.cs.introcs.StdOut;
+import skunk.domain.SkunkConstant.Constant;
+
 
 //**********************************************************
 //Turn: Series or multiple rolls until skunk or user decline to rolls
@@ -9,43 +10,52 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class Turn
 {
-	private static final int CONSTANT_PLAYER_DECLINED_ROLL = -44;
-	private static final int CONSTANT_IS_SKUNK_DEUCE = -22;
-	private static final int CONSTANT_IS_REGULAR_SKUNK = -11;
-	private static final int CONSTANT_IS_DOUBLE_SKUNK = -33;
+	private int playerScore;
+	private int chipCount;
 	private Roll roll;
+	private int iCalledFrom;
+	
 	private SkunkUI uiT;
+	public SkunkConstant sk;
+	public Player p;
 	
 	//**********************************************************
 	
-	public Turn( SkunkUI ui )
+	public Turn()
 	{
-		//StdOut.println("In Turn constructor: ");
 		roll = new Roll();
-	
-		uiT = ui;
+		uiT = new SkunkUI();
 	}
 	
-
 	//**********************************************************
 	
-	public int playTurn()
+	public Turn( int iCallFrom, int iTestDieValue )
+	{
+		uiT = new SkunkUI();
+		roll = new Roll( uiT, iCallFrom, iTestDieValue );
+		this.iCalledFrom =  iCallFrom;
+	}
+	
+	//**********************************************************
+	
+	public int playTurn( Player activePlayer, int activePlayerIndex )
 	{
 		int iExitValue = 0;
 		
-		//Add name of active player Todo
-		uiT.printLine( "Starting Turn for player..." );
+		//Add name of active player
+		uiT.printLine("\nStarting Turn for " + activePlayer.playerName );
 		
-		//Reset the score for the activeplayer. Todo:
-		
-		//
 		boolean bGameOver = false;
+		
+		//Sets up the counter for the ChipCount and playerScore
+		chipCount = activePlayer.getPlayerChipCount();
+		playerScore = activePlayer.getPlayerScore();
 		
 		while( !bGameOver )
 		{
 			//Get player's chooses to roll or decline the roll
 			boolean bWantToPlay = getRollChoice();
-					
+								
 			while( bWantToPlay )
 			{
 				roll.rollDice();
@@ -56,58 +66,138 @@ public class Turn
 				//Check for double skunk before regular skunk
 				if( roll.isDoubleSkunk() )
 				{
-					uiT.printLine( "isDoubleSkunk" );
+					iExitValue = Constant.CONSTANT_IS_DOUBLE_SKUNK;
 					bGameOver = true;
-					iExitValue = CONSTANT_IS_DOUBLE_SKUNK;
-					break;
-				}
-				else if( roll.isRegularSkunk() )
-				{
-					uiT.printLine( "isRegularSkunk" );
-					bGameOver = true;
-					iExitValue = CONSTANT_IS_REGULAR_SKUNK;
+					
+					chipCount -= Constant.CONSTANT_PENALTY_DOUBLE_SKUNK_4;
+					activePlayer.setPlayerChipCount(chipCount);
+					
+					activePlayer.setPlayerScore(0);
+					
 					break;
 				}
 				else if( roll.isSkunkDeuce() )
 				{
-					uiT.printLine( "isSkunkDeuce" );
+					iExitValue = Constant.CONSTANT_IS_SKUNK_DEUCE;
 					bGameOver = true;
-					iExitValue = CONSTANT_IS_SKUNK_DEUCE;
+					
+					chipCount -= Constant.CONSTANT_PENALTY_SKUNK_DEUCE_2;
+					activePlayer.setPlayerChipCount(chipCount);
+					
 					break;
 				}
+				else if( roll.isRegularSkunk() )
+				{
+					iExitValue = Constant.CONSTANT_IS_REGULAR_SKUNK;
+					bGameOver = true;
+					
+					chipCount -= Constant.CONSTANT_PENALTY_REGULAR_SKUNK_1;
+					activePlayer.setPlayerChipCount(chipCount);
+					
+					break;
+				}
+				else 
+				{
+					playerScore += iValue;
+					activePlayer.setPlayerScore(playerScore);
+				}
 				
+				//Set the scores for this turn, adjust chips for penalty.
+				printScore( activePlayer );
 				bWantToPlay = getRollChoice();
-				
-				//Set the scores for this turn
-				//Adjust chips for penalty.
 			}
 			
 			if( !bWantToPlay )
 			{
-				uiT.printLine( "Player declined the roll." );
 				bGameOver = true;
-				iExitValue = CONSTANT_PLAYER_DECLINED_ROLL;
+				iExitValue = Constant.CONSTANT_PLAYER_DECLINED_ROLL;
 				break;
 			}
 		}
 		
+		String strExitReason = getReasonForExit( iExitValue );
+		
 		//End of the turn...
-		//Todo:
-		//Set the scores for this turn
-		//Adjust chips for penalty. 
-				
+		//Set the scores for this turn, adjust chips for penalty.
+		uiT.printLine("\nGame ended for " + activePlayer.playerName + " because ***" + strExitReason );
+		printOverAllScore( activePlayer );
+		
 		return iExitValue;
 	}
 	
+	
+
+	//**********************************************************
+
+	private void printScore(Player aPlayer) 
+	{
+		uiT.printLine("\nPlayer " + ( aPlayer.playerNum + 1) +": "+ aPlayer.playerName + "\'s turn score is: " + Integer.toString(playerScore));
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1)  +": "+ aPlayer.playerName +  "\'s current chipcount is: "+ aPlayer.getPlayerChipCount());
+	}
+
+	//**********************************************************
+
+	private void printOverAllScore( Player aPlayer ) 
+	{
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall score is: "+ aPlayer.getPlayerScore());
+		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall chipcount is: " + aPlayer.getPlayerChipCount());
+	}
+
 	//**********************************************************
 	
+	public String getReasonForExit(int iExitValue) 
+	{
+		String strTemp = "Unknown";
+		
+		switch( iExitValue)
+		{
+		case Constant.CONSTANT_IS_REGULAR_SKUNK:
+			strTemp = "of Regular skunk.";
+			break;
+		case Constant.CONSTANT_IS_DOUBLE_SKUNK:
+			strTemp = "of double skunk.";
+			break;
+		case Constant.CONSTANT_IS_SKUNK_DEUCE:
+			strTemp = "of skunk and a deuce.";
+			break;
+		case Constant.CONSTANT_PLAYER_DECLINED_ROLL:
+			strTemp = "player declined roll.";
+			break;
+		}
+		return strTemp;
+	}
+
+	//**********************************************************
+
 	public boolean getRollChoice()
 	{
-		String szUserResp = uiT.printLineReadResponse("Do you want to roll? y or n");
-		szUserResp.trim();
+		boolean bUserResp = false;
 		
-		boolean bUserResp = ( szUserResp.toLowerCase().charAt(0) == 'y' );
-		//uiT.printLine("UserResp: " + szUserResp + " : " + bUserResp );	
+		if( this.iCalledFrom == Constant.CONSTANT_PLAYER_WANTS_TO_PLAY )
+		{
+			bUserResp = true;
+		}
+		else if( this.iCalledFrom == Constant.CONSTANT_PLAYER_DECLINED_TO_PLAY )
+		{
+			bUserResp = false;
+		}
+		else
+		{
+			String szUserResp = uiT.printLineReadResponse("\nDo you want to roll? y or n");
+			szUserResp.trim();
+			
+			char chResp = szUserResp.toLowerCase().charAt(0);
+			
+			if( chResp == 'y' )
+				bUserResp = true;
+			else if( chResp == 'n' )
+				bUserResp = false;
+			else
+			{
+				uiT.printLine("invalid response.");
+				bUserResp = false;
+			}
+		}
 		
 		return bUserResp;
 	}
