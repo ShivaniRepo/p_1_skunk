@@ -19,7 +19,7 @@ public class TestDie
 	@Test
 	public void test_Die_setLastRoll() throws NoSuchFieldException, IllegalAccessException
 	{
-		// Need to add test case for setter method?
+		// Need to add test case for setter method
 	}
 	
 	@Test

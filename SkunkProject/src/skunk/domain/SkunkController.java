@@ -16,8 +16,4 @@ public class SkunkController
 		return game.run();
 	}
 	
-	public void startGame()
-	{
-		game.startGame();
-	}
 }
