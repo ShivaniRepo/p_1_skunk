@@ -51,7 +51,8 @@ public class TestPlayer
 	@Test
 	public void testgetPlayerNum()
 	{
-		fail();
+		Player player = new Player();
+		assertEquals("testPlayer", 0, player.getPlayerNum());
 	}
 
 }
