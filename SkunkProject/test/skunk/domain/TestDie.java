@@ -16,4 +16,18 @@ public class TestDie
         assertTrue(die.getLastRoll() >= 1 && die.getLastRoll() <= 6);
 	}
 	
+	@Test
+	public void test_Die_setLastRoll() throws NoSuchFieldException, IllegalAccessException
+	{
+		// Need to add test case for setter method?
+	}
+	
+	@Test
+	public void test_Die_toString()
+	{
+		Die die = new Die();
+		String expected = "Die: " + die.getLastRoll();
+		assertEquals(die.toString(), expected);
+	}
+	
 }
