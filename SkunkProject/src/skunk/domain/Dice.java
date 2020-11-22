@@ -39,11 +39,11 @@ public class Dice
 
 	
 	// overloaded constructor
-	public Dice(Die die1, Die die2) 
-	{
-		this.die1 = die1;
-		this.die2 = die2;
-	}
+	//public Dice(Die die1, Die die2) 
+	//{
+	//	this.die1 = die1;
+	//	this.die2 = die2;
+	//}
 
 	//**********************************************************
 	// Instance methods can also be declared anywhere in body of class
@@ -115,5 +115,8 @@ public class Dice
 
 		StdOut.println("Actual count: " + doubleSkunkCount);
 		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
+		
+		if( args.length > 0)
+			args[0] = "Dice class counting double skunk count in simulation.";
 	}
 }

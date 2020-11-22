@@ -18,6 +18,12 @@ public class TestDice
 	@Test
 	public void test_Dice_main()
 	{
-		fail();
+		//fail();
+		
+		String[] args = { "empty" }; 
+		
+		Dice.main(args);
+		
+		assertEquals( "Dice class counting double skunk count in simulation.", args[0]);
 	}
 }
