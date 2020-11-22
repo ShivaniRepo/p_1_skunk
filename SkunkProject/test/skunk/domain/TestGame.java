@@ -51,9 +51,6 @@ public class TestGame {
 		
 		int iReturn = newGame.getNumberOfPlayers(-1);
 		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn);
-
-		newGame.addPlayer("Quan");
-		assertTrue(newGame.getTotalPlayers() == 1);
 	}
 
 	@Test
@@ -69,13 +66,6 @@ public class TestGame {
 		
 		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
 		assertEquals( RETURN_OK, iReturn );
-
-		newGame.addPlayer("Quan");
-		newGame.addPlayer("Shivani");
-		newGame.addPlayer("Ayan");
-		newGame.removePlayers();
-		assertTrue(newGame.getTotalPlayers() == 0);
-
 	}
 }
 
