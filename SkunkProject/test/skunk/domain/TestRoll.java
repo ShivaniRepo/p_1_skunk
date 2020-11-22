@@ -1,5 +1,6 @@
 package skunk.domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
@@ -23,8 +24,14 @@ public class TestRoll
 	@Test
 	public void test_get_iRollTotal()
 	{
-		fail();
-	}
+		Roll roll =  new Roll();
+		int iTestingValue = 10;
+		
+		roll.set_iRollTotal( iTestingValue );
+		int iReurnValue = roll.get_iRollTotal();
+		
+		assertEquals( iReurnValue, iTestingValue);
+	};
 	
 	
 }
