@@ -20,8 +20,8 @@ public class TestDie
 	public void test_Die_setLastRoll() 
 	{
 		Die die = new Die();
-		fail();
-		
+		die.setLastRoll(2);
+		assertEquals("last roll", 2, die.getLastRoll());
 	}
 	
 	@Test
