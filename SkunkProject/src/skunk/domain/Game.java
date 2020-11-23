@@ -16,7 +16,7 @@ public class Game
 
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
-	public ArrayList<Player> players;
+	public ArrayList<Player> players = new ArrayList();
 	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
