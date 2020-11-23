@@ -11,6 +11,15 @@ public class TestGame {
 	private static final int RETURN_OK = 0;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
 
+	// Test to verify Game object. 
+	
+	@Test
+	public void test_game_object() 
+	{
+		Game newGame = new Game();
+		assertNotNull(newGame);
+	}
+	
 	@Test
 	public void test_game_status() 
 	{
@@ -101,14 +110,3 @@ public class TestGame {
 //		int total = newGame.getTotalPlayers();
 //		assertNotNull(total);
 //	}
-//	
-//	// Test to verify Game object	
-//		
-//	@Test
-//	public void test_game_object() 
-//	{
-//		Game newGame = new Game();
-//		assertNotNull(newGame);
-//
-//	}	
-//
