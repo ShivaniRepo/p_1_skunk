@@ -16,9 +16,7 @@ public class Game
 
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
-	private ArrayList<Player> totalPlayers = new ArrayList();
-	
-	public ArrayList<Player> players;
+	public ArrayList<Player> players = new ArrayList();
 	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
@@ -40,8 +38,6 @@ public class Game
 		turn = new Turn( );
 	}
 
-	
-	
 	public String getGameStatus()
 	{
 		if (StartGame == true) 
@@ -108,22 +104,6 @@ public class Game
 			//Todo: if string entered is other than integer.
 		}
 	}
-	
-	// Return total players.
-	public int getTotalPlayers()
-	{
-		int total = totalPlayers.size();
-		return total;
-		
-	}
-
-	// Method to add Player to Game. 
-	public void addPlayer(String string) 	
-	{
-		Player player = new Player(string);
-		totalPlayers.add(player);
-		
-	}
 
 	//**********************************************************
 	// Game will communicate with controller and get the number of players.
@@ -168,38 +148,26 @@ public class Game
 		}
 	}
 
-	// Method to REMOVE all Players from Game. 
-
-	public void removePlayers() 
+	// Return total players.
+	
+	public int getPlayers()
 	{
-		totalPlayers.clear();
+		int total = players.size();
+		return total;
 	}
 
-//	
-//	
-//	// Return total players.
-//	public int getTotalPlayers()
-//	{
-//		int total = totalPlayers.size();
-//		return total;
-//		
-//	}
-//
-//	// Method to add Player to Game. 
-//	public void addPlayer(String string) 
-//	
-//	{
-//		Player player = new Player(string);
-//		totalPlayers.add(player);
-//		
-//	}
-//	
-//	// Method to REMOVE all Players from Game. 
-//
-//	public void removePlayers() 
-//	{
-//		totalPlayers.clear();
-//	}
-//
+	// Method to add Player to Game. 
 	
+	public void addPlayer(String string) 	
+	{
+		Player player = new Player(string);
+		players.add(player);
+	}
+	
+	// Method to REMOVE all Players from Game. 
+	
+	public void removePlayers() 
+	{
+		players.clear();
+	}
 }

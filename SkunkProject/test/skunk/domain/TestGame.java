@@ -62,6 +62,8 @@ public class TestGame {
 		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn);
 	}
 
+	
+	// Test to validate Player count. Max 30. 
 	@Test
 	public void test_skunk_game_valid_player_number_zero_to_Max()
 	{
@@ -76,37 +78,38 @@ public class TestGame {
 		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
 		assertEquals( RETURN_OK, iReturn );
 	}
-}
+	
+	//  Test to ADD Player to Skunk Game. 
+	
+	@Test
+	public void test_game_add_player()
+	{
+		Game newGame = new Game();
+		newGame.addPlayer("Quan");
+		assertTrue(newGame.getPlayers() == 1);
+	}
+	
+	// Test to REMOVE Player from Skunk Game. 
+	
+	@Test
+	public void test_game_remove_player()
+	{
+		Game newGame = new Game();
+		newGame.addPlayer("Quan");
+		newGame.addPlayer("Shivani");
+		newGame.addPlayer("Ayan");
+		newGame.removePlayers();
+		assertTrue(newGame.getPlayers() == 0);
+	}
+	
+	// Test for Total Players in Skunk Game.
+	
+	@Test
+	public void test_game_total_player()
+	{
+		Game newGame = new Game();
+		int total = newGame.getPlayers();
+		assertNotNull(total);
+	}
 
-//	//  Test to ADD Player to Skunk Game. 
-//	
-//	@Test
-//	public void test_game_add_player()
-//	{
-//		Game newGame = new Game();
-//		newGame.addPlayer("Quan");
-//		assertTrue(newGame.getTotalPlayers() == 1);
-//	}
-//	
-//	// Test to REMOVE Player from Skunk Game. 
-//	
-//	@Test
-//	public void test_game_remove_player()
-//	{
-//		Game newGame = new Game();
-//		newGame.addPlayer("Quan");
-//		newGame.addPlayer("Shivani");
-//		newGame.addPlayer("Ayan");
-//		newGame.removePlayers();
-//		assertTrue(newGame.getTotalPlayers() == 0);
-//	}
-//	
-//	// Test for Total Players in Skunk Game.
-//	
-//	@Test
-//	public void test_game_total_player()
-//	{
-//		Game newGame = new Game();
-//		int total = newGame.getTotalPlayers();
-//		assertNotNull(total);
-//	}
+}
