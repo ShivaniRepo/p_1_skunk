@@ -83,6 +83,12 @@ public class TestGame {
 	// Test for saving Players Name -- Needs more work
 
 	@Test
+	public void test_run()
+	{
+		fail();
+	}
+	
+	@Test
 	public void test_savePlayerNamesInArray()
 	{
 		String[] NameOfPlayers = new String[30];
