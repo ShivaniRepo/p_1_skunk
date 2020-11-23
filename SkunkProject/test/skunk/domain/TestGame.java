@@ -79,9 +79,9 @@ public class TestGame {
 		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
 		assertEquals( RETURN_OK, iReturn );
 	}
-	
-	
+
 	// Test for saving Players Name -- Needs more work
+
 	@Test
 	public void test_savePlayerNamesInArray()
 	{
