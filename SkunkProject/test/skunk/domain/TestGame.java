@@ -2,6 +2,7 @@ package skunk.domain;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.junit.Test;
@@ -82,7 +83,15 @@ public class TestGame {
 	@Test
 	public void test_savePlayerNamesInArray()
 	{
-		fail();
+		String[] NameOfPlayers = new String[30];
+		ArrayList<Player> players = new ArrayList<Player>();
+		
+		NameOfPlayers[0]= "Quan";
+		NameOfPlayers[1]= "Shivani";
+		
+		Game newGame = new Game();
+		newGame.savePlayerNamesInArray();
+		assertEquals("Shivani", NameOfPlayers[1] );
 	}
 	
 	//  Test to ADD Player to Skunk Game. 
