@@ -79,6 +79,12 @@ public class TestGame {
 		assertEquals( RETURN_OK, iReturn );
 	}
 	
+	@Test
+	public void test_savePlayerNamesInArray()
+	{
+		fail();
+	}
+	
 	//  Test to ADD Player to Skunk Game. 
 	
 	@Test
