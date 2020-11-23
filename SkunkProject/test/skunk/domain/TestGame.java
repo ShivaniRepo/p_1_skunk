@@ -80,6 +80,8 @@ public class TestGame {
 		assertEquals( RETURN_OK, iReturn );
 	}
 	
+	
+	// Test for saving Players Name -- Needs more work
 	@Test
 	public void test_savePlayerNamesInArray()
 	{
@@ -91,7 +93,7 @@ public class TestGame {
 		
 		Game newGame = new Game();
 		newGame.savePlayerNamesInArray();
-		assertEquals("Shivani", NameOfPlayers[1] );
+		assertEquals("Shivani", NameOfPlayers[1]);
 	}
 	
 	//  Test to ADD Player to Skunk Game. 
