@@ -6,7 +6,10 @@ import java.util.Random;
 
 import org.junit.Test;
 
-public class TestGame {
+import edu.princeton.cs.introcs.StdOut;
+
+public class TestGame 
+{
 	
 	private static final int RETURN_OK = 0;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
@@ -111,5 +114,25 @@ public class TestGame {
 		int total = newGame.getPlayers();
 		assertNotNull(total);
 	}
+	
+	@Test
+	public void testing_JUnit_call()
+	{
+		SkunkUI uiTest = new SkunkUI();
+		boolean bShouldBeTrue = uiTest.isJUnitTest();
+		StdOut.println("bShouldBeTrue: " + bShouldBeTrue);
+		
+	}
+	
+	@Test
+	public void testing_game_run()
+	{
+		Game newGame = new Game();
+		boolean bRun = newGame.run();
+		assertTrue( bRun );		
+	
+	}
+	
+	
 
 }

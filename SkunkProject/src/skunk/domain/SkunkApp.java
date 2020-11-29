@@ -10,13 +10,7 @@ public class SkunkApp
 	
 	public SkunkController skunkController;
 	public static SkunkUI ui;
-	
-	//**********************************************************
-	
-	public SkunkApp()
-	{
-		ui = new SkunkUI();
-	}
+		
 	
 	//**********************************************************
 	
