@@ -29,7 +29,7 @@ public class Game
 	private Turn turn;
 	
 	public Player activePlayer;
-	public int activePlayerIndex;
+	//public int activePlayerIndex;
 	
 	//**********************************************************
 	
@@ -79,13 +79,13 @@ public class Game
 		askAndParse_NumberOfPlayers();
 		
 		// If the number of players entered in invalid, try again.
-		int iStatus = getNumberOfPlayers(this.iNumOfPlayers);
+		int iStatus = validateNumberOfPlayers(this.iNumOfPlayers);
 	
 		
 		while( iStatus < 0 ) 
 		{
 			askAndParse_NumberOfPlayers();
-			iStatus = getNumberOfPlayers( this.iNumOfPlayers );
+			iStatus = validateNumberOfPlayers( this.iNumOfPlayers );
 		} 
 		
 		// Ask for player's name, can add try and catch here.
@@ -93,11 +93,42 @@ public class Game
 		
 		//For P1.2: Just one Player.
 		//One complete interactive turn of skunk with one human player.
+		boolean bContinue = false;
+		int iTurnCount = 0;
 		
-		activePlayerIndex = 0;		
-		iStatus = turn.playTurn(players.get(activePlayerIndex), activePlayerIndex);
+		do
+		{
+			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
+			{
+				//activePlayerIndex = iPlayer;		
+				iStatus = turn.playTurn(players.get(iPlayer), iPlayer);
+				ui.printLine( "Turn is OVER." );
+			}
+			
+			ui.printLine( "********** Turn: " + (iTurnCount+1) +"**********" );
+			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
+			{
+				turn.printOverAllScore(players.get(iPlayer));
+			}
+			ui.printLine( "*********************************\n" );
+			
+			
+			//
+			// Gve option to continue the game.
+			//
+			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
+						
+			if( strTemp.trim().equalsIgnoreCase("y") )
+				bContinue = true;
+			else
+				ui.printLine( "invalid reponse. Exiting game." );
+			
+			
+			iTurnCount++;
+		} while( bContinue );
 		
-		ui.printLine( "Turn is OVER." );
+		//Print score 
+		
 		
 		bStatus = (iStatus == 0) ? false: true; 
 			
@@ -117,7 +148,7 @@ public class Game
 		}
 		catch( Exception e )
 		{
-			//Todo: if string entered is other than integer.
+			ui.printLine( "invalid iNumOfPlayers entered" );
 		}
 	}
 
@@ -126,7 +157,7 @@ public class Game
 	// Set the parsed number of players in the Player class.
 	//**********************************************************
 
-	public int getNumberOfPlayers(int iNumOfPlayers)
+	public int validateNumberOfPlayers(int iNumOfPlayers)
 	{
 		if( iNumOfPlayers <= 0 )
 		{
@@ -151,7 +182,7 @@ public class Game
 			{
 				strTemp = ui.printLineReadNames( iii, "\nEnter Name of Player " + (iii+1) + ": " );
 				this.NameOfPlayers[iii] = strTemp;
-				this.players.add(new Player(strTemp));
+				this.players.add(new Player(strTemp, iii ));
 			}
 			catch( IllegalArgumentException e)
 			{

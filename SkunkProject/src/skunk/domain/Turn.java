@@ -43,7 +43,7 @@ public class Turn
 		int iExitValue = 0;
 		
 		//Add name of active player
-		uiT.printLine("\nStarting Turn for " + activePlayer.playerName );
+		uiT.printLine("\n*** Starting Turn for " + activePlayer.playerName );
 		
 		boolean bGameOver = false;
 		
@@ -137,7 +137,7 @@ public class Turn
 
 	//**********************************************************
 
-	private void printOverAllScore( Player aPlayer ) 
+	public void printOverAllScore( Player aPlayer ) 
 	{
 		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall score is: "+ aPlayer.getPlayerScore());
 		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall chipcount is: " + aPlayer.getPlayerChipCount());

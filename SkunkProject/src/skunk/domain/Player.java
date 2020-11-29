@@ -14,12 +14,21 @@ public class Player
 		this.playerScore = 0;
 	}
 
-	public Player(String playerName)
+	public Player(String playerName )
 	{
 		this.playerName= playerName;
 		this.chipCount = 50;
 		this.playerScore = 0;
 	}
+	
+	public Player(String playerName, int iNum )
+	{
+		this.playerName= playerName;
+		this.chipCount = 50;
+		this.playerScore = 0;
+		this.playerNum = iNum;
+	}
+	
 
 	public String getPlayerName() 
 	{
