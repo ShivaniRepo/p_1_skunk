@@ -22,12 +22,19 @@ public class FromUser implements SkunkInput
 	
 	//**********************************************************
 	
-	@Override
-	public String printLineReadResponse(String szLine) 
+	public String printLineRead(String szLine)
 	{
 		StdOut.println( szLine );
 		String strResponse =  StdIn.readLine();
 		return strResponse;
+	}
+	
+	//**********************************************************
+	
+	@Override
+	public String printLineReadResponse(String szLine) 
+	{
+		return printLineRead( szLine );
 	}
 
 	//**********************************************************
@@ -35,17 +42,13 @@ public class FromUser implements SkunkInput
 	@Override
 	public String printLineReadNames( int index, String szLine)
 	{
-		StdOut.println( szLine );
-		String strResponse =  StdIn.readLine();
-		return strResponse;
+		return printLineRead( szLine );
 	}
 
 	//**********************************************************
 	
 	public String printLineRead_Yes_No(String szLine)
 	{
-		StdOut.println( szLine );
-		String strResponse =  StdIn.readLine();
-		return strResponse;
+		return printLineRead( szLine );
 	}
 }

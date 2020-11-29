@@ -7,10 +7,13 @@ import edu.princeton.cs.introcs.StdOut;
 public class SkunkApp
 {
 	private static final int CONSTANT_TO_TEST_RETURN = 111;
+	private static final int CONSTANT_RUN_SUCCESSFUL = 100;
+	
+	private static int iTestValue_ForApp = -1;
 	
 	public SkunkController skunkController;
 	public static SkunkUI ui;
-		
+	
 	
 	//**********************************************************
 	
@@ -20,10 +23,12 @@ public class SkunkApp
 		ui.welcomeString();
 
 		SkunkController skunk = new SkunkController();
+		iTestValue_ForApp = -1;
 		
 		try
 		{
 			skunk.run();
+			iTestValue_ForApp = CONSTANT_RUN_SUCCESSFUL;
 		}
 		catch( Exception e )
 		{
@@ -37,11 +42,11 @@ public class SkunkApp
 	
 	//**********************************************************
 	
-	public boolean run()
-	{
-		StdOut.println("run");
-		return skunkController.run();
-	}
+	//public boolean run()
+	//{
+	//	StdOut.println("run");
+	//	return skunkController.run();
+	//}
 
 	//**********************************************************
 	
@@ -49,6 +54,20 @@ public class SkunkApp
 	{
 		return CONSTANT_TO_TEST_RETURN;
 	}
+	
+	//**********************************************************
+	
+	public static int getiTestValue_ForApp() 
+	{
+		return iTestValue_ForApp;
+	}
+
+	//**********************************************************
+	
+	//public static void setiTestValue_ForApp(int iTestValue) 
+	//{
+	//	iTestValue_ForApp = iTestValue;
+	//}
 	
 	//**********************************************************
 

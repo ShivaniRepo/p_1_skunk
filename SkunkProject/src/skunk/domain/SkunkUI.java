@@ -1,6 +1,5 @@
 package skunk.domain;
 
-import edu.princeton.cs.introcs.StdIn;
 import edu.princeton.cs.introcs.StdOut;
 
 public class SkunkUI
@@ -29,10 +28,6 @@ public class SkunkUI
 	{
 		String strResponse = ui2.printLineReadResponse(szLine);
 		return strResponse;
-		
-		//StdOut.println( szLine );
-		//String strResponse =  StdIn.readLine();
-		//return strResponse;
 	}
 	
 	//**********************************************************
@@ -41,10 +36,6 @@ public class SkunkUI
 	{
 		String strResponse = ui2.printLineReadNames( iIndex, szLine );
 		return strResponse;
-		
-		//StdOut.println( szLine );
-		//String strResponse =  StdIn.readLine();
-		//return strResponse;
 	}
 	
 	//**********************************************************
