@@ -2,6 +2,7 @@ package skunk.domain;
 import edu.princeton.cs.introcs.StdOut;
 
 //**********************************************************
+// 	Version: 1.1
 //**********************************************************
 
 public class SkunkApp
@@ -33,23 +34,14 @@ public class SkunkApp
 		catch( Exception e )
 		{
 			StdOut.println("Exception in SkunkApp");
-			//e.printStackTrace();
-			
+
 			StdOut.print( e.toString() );
 			StdOut.println( e.getMessage() );
 		}
 	}
 	
 	//**********************************************************
-	
-	//public boolean run()
-	//{
-	//	StdOut.println("run");
-	//	return skunkController.run();
-	//}
-
-	//**********************************************************
-	
+		
 	public int testSkunkAppClass()
 	{
 		return CONSTANT_TO_TEST_RETURN;
@@ -64,11 +56,5 @@ public class SkunkApp
 
 	//**********************************************************
 	
-	//public static void setiTestValue_ForApp(int iTestValue) 
-	//{
-	//	iTestValue_ForApp = iTestValue;
-	//}
-	
-	//**********************************************************
 
 }

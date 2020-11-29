@@ -77,7 +77,7 @@ public class SkunkUI
 	public SkunkUI()
 	{
 		boolean  bisJUnitTest = isJUnitTest();
-		StdOut.println("isJUnitTest: " + bisJUnitTest);
+		//StdOut.println("isJUnitTest: " + bisJUnitTest);
 		
 		if( !bisJUnitTest )
 			ui2 = new FromUser();

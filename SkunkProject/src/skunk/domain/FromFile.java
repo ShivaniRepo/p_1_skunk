@@ -15,12 +15,12 @@ public class FromFile implements SkunkInput
 	
 	//**********************************************************
 	
-	@Override
-	public void welcomeString()
-	{
-		StdOut.println("***** Welcome to the Skunk game created by Seagators: FromFile  *****");
-		StdOut.println("-----------------------------------------------------------");
-	}
+	//@Override
+	//public void welcomeString()
+	//{
+	//	StdOut.println("***** Welcome to the Skunk game created by Seagators: FromFile  *****");
+	//	StdOut.println("-----------------------------------------------------------");
+	//}
 	
 	//**********************************************************
 	

@@ -7,6 +7,8 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
+import edu.princeton.cs.introcs.StdOut;
+
 
 public class Game 
 {
@@ -128,7 +130,7 @@ public class Game
 	{
 		if( iNumOfPlayers <= 0 )
 		{
-			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
+			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than zero?\n" );
 			return ERROR_INVALID_PLAYER_NUMBER;
 		}
 		
@@ -151,10 +153,17 @@ public class Game
 				this.NameOfPlayers[iii] = strTemp;
 				this.players.add(new Player(strTemp));
 			}
-			catch( Exception e )
+			catch( IllegalArgumentException e)
 			{
-				//ToDo: empty string entered or just return key hit.
+				//Empty string entered or user hit return key.
+				ui.printLine( "invalid Name entered." );
 			}
+			//catch( Exception e )
+			//{
+			//	//Any unexpected exception
+			//	ui.printLine( "unexpected exception." );
+			//	ui.printLine( e.toString() );
+			//}
 		}
 	}
 

@@ -3,6 +3,7 @@ package skunk.domain;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import skunk.domain.SkunkConstant.Constant;
@@ -89,4 +90,18 @@ public class TestTurn
 	 	assertEquals( iExitValue, Constant.CONSTANT_IS_SKUNK_DEUCE );
 	}
 	
+	
+	@Test
+	public void test_turn_roll_getRollChoice_false2()
+	{
+		Turn testTurn = null;
+	 	testTurn = new Turn( );
+	
+	 	boolean b = SkunkUI.getUi2().get_bYes0No1();
+	 	SkunkUI.getUi2().set_bYes0No1(false);
+	 	
+	 	boolean bRollChoice = testTurn.getRollChoice();
+	 	assertFalse( bRollChoice );
+	
+	}
 }

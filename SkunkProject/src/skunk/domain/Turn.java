@@ -168,6 +168,7 @@ public class Turn
 	}
 
 	//**********************************************************
+	
 
 	public boolean getRollChoice()
 	{

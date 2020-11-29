@@ -6,26 +6,17 @@ import edu.princeton.cs.introcs.StdOut;
 public class FromUser implements SkunkInput 
 {
 
-	public FromUser()
-	{
-		
-	}
-	
-	//**********************************************************
-	
-	@Override
-	public void welcomeString()
-	{
-		StdOut.println("***** Welcome to the Skunk game created by Seagators: FromUser  *****");
-		StdOut.println("-----------------------------------------------------------");
-	}
-	
 	//**********************************************************
 	
 	public String printLineRead(String szLine)
 	{
+		String strResponse = null;
+		
 		StdOut.println( szLine );
-		String strResponse =  StdIn.readLine();
+		strResponse =  StdIn.readLine();
+		if( strResponse.trim().isEmpty() )
+			throw new IllegalArgumentException("Empty string enterd.");
+		
 		return strResponse;
 	}
 	
@@ -51,4 +42,20 @@ public class FromUser implements SkunkInput
 	{
 		return printLineRead( szLine );
 	}
+	
+	//**********************************************************
+	
+	public boolean get_bYes0No1() 
+	{
+		return false;
+	}
+
+	//**********************************************************
+	
+	public void set_bYes0No1( boolean bState ) 
+	{
+		return;
+	}
+	
+	//**********************************************************
 }
