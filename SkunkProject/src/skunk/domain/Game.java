@@ -1,11 +1,13 @@
 package skunk.domain;
 
 
-import java.io.InputStreamReader;
+//import java.io.InputStreamReader;
 
 //import java.util.ArrayList;
 
 import java.util.ArrayList;
+
+import edu.princeton.cs.introcs.StdOut;
 
 
 public class Game 
@@ -16,7 +18,7 @@ public class Game
 
 	private int iNumOfPlayers;
 	private String[] NameOfPlayers;
-	public ArrayList<Player> players = new ArrayList();
+	public ArrayList<Player> players = new ArrayList<Player>();
 	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
@@ -29,6 +31,8 @@ public class Game
 	public Player activePlayer;
 	public int activePlayerIndex;
 	
+	//**********************************************************
+	
 	// Game Constructor 
 	public Game() 
 	{
@@ -38,9 +42,11 @@ public class Game
 		turn = new Turn( );
 	}
 
+	//**********************************************************
+	
 	public String getGameStatus()
 	{
-		if (StartGame == true) 
+		if (this.StartGame == true) 
 		{
 			return "Skunk game has started.";
 		}
@@ -50,6 +56,8 @@ public class Game
 		}
 		
 	}
+	
+	//**********************************************************
 	
 	public void startGame()
 	{
@@ -61,8 +69,12 @@ public class Game
 		return this.EndGame = false;
 	}
 
+	//**********************************************************
+	
 	public boolean run() 
 	{
+		boolean bStatus = false;
+		
 		// Ask for number of players.
 		askAndParse_NumberOfPlayers();
 		
@@ -87,13 +99,17 @@ public class Game
 		
 		ui.printLine( "Turn is OVER." );
 		
-		return true;
+		bStatus = (iStatus == 0) ? false: true; 
+			
+		return bStatus;
 	}
+	
+	//**********************************************************
 	
 	public void askAndParse_NumberOfPlayers() 
 	{
 		String strTemp;
-		//ui.printLine( "*****" );
+
 		try
 		{
 			strTemp = ui.printLineReadResponse( "Enter number of players?" );
@@ -109,19 +125,15 @@ public class Game
 	// Game will communicate with controller and get the number of players.
 	// Set the parsed number of players in the Player class.
 	//**********************************************************
-	
 
 	public int getNumberOfPlayers(int iNumOfPlayers)
 	{
-		
-		
 		if( iNumOfPlayers <= 0 )
 		{
-			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than 0?\n" );
+			ui.printLine( "invalid iNumOfPlayers: " + iNumOfPlayers + "\nEnter number of players greater than zero?\n" );
 			return ERROR_INVALID_PLAYER_NUMBER;
 		}
 		
-
 		return 0;
 	}
 	
@@ -133,21 +145,29 @@ public class Game
 	public void savePlayerNamesInArray() 
 	{
 		String strTemp;
-		for ( int iii =0; iii < this.iNumOfPlayers; iii++ )
+		for ( int iii=0; iii < this.iNumOfPlayers; iii++ )
 		{
 			try
 			{
-				strTemp = ui.printLineReadResponse( "\nEnter Name of Player " + (iii+1) + ": " );
+				strTemp = ui.printLineReadNames( iii, "\nEnter Name of Player " + (iii+1) + ": " );
 				this.NameOfPlayers[iii] = strTemp;
 				this.players.add(new Player(strTemp));
 			}
-			catch( Exception e )
+			catch( IllegalArgumentException e)
 			{
-				//ToDo: empty string entered or just return key hit.
+				//Empty string entered or user hit return key.
+				ui.printLine( "invalid Name entered." );
 			}
+			//catch( Exception e )
+			//{
+			//	//Any unexpected exception
+			//	ui.printLine( "unexpected exception." );
+			//	ui.printLine( e.toString() );
+			//}
 		}
 	}
 
+	//**********************************************************
 	// Return total players.
 	
 	public int getPlayers()
@@ -156,6 +176,7 @@ public class Game
 		return total;
 	}
 
+	//**********************************************************
 	// Method to add Player to Game. 
 	
 	public void addPlayer(String string) 	
@@ -164,6 +185,7 @@ public class Game
 		players.add(player);
 	}
 	
+	//**********************************************************
 	// Method to REMOVE all Players from Game. 
 	
 	public void removePlayers() 

@@ -2,12 +2,14 @@ package skunk.domain;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import org.junit.Test;
 
-public class TestGame {
+import edu.princeton.cs.introcs.StdOut;
+
+public class TestGame 
+{
 	
 	private static final int RETURN_OK = 0;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
@@ -80,20 +82,6 @@ public class TestGame {
 		assertEquals( RETURN_OK, iReturn );
 	}
 	
-	@Test
-	public void test_savePlayerNamesInArray()
-	{
-		String[] NameOfPlayers = new String[30];
-		ArrayList<Player> players = new ArrayList<Player>();
-		
-		NameOfPlayers[0]= "Quan";
-		NameOfPlayers[1]= "Shivani";
-		
-		Game newGame = new Game();
-		newGame.savePlayerNamesInArray();
-		assertEquals("Shivani", NameOfPlayers[1]);
-	}
-	
 	//  Test to ADD Player to Skunk Game. 
 	
 	@Test
@@ -126,5 +114,25 @@ public class TestGame {
 		int total = newGame.getPlayers();
 		assertNotNull(total);
 	}
+	
+	@Test
+	public void testing_JUnit_call()
+	{
+		SkunkUI uiTest = new SkunkUI();
+		boolean bShouldBeTrue = uiTest.isJUnitTest();
+		StdOut.println("bShouldBeTrue: " + bShouldBeTrue);
+		
+	}
+	
+	@Test
+	public void testing_game_run()
+	{
+		Game newGame = new Game();
+		boolean bRun = newGame.run();
+		assertTrue( bRun );		
+	
+	}
+	
+	
 
 }

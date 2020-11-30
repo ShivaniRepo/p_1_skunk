@@ -168,6 +168,7 @@ public class Turn
 	}
 
 	//**********************************************************
+	
 
 	public boolean getRollChoice()
 	{
@@ -183,7 +184,7 @@ public class Turn
 		}
 		else
 		{
-			String szUserResp = uiT.printLineReadResponse("\nDo you want to roll? y or n");
+			String szUserResp = uiT.printLineRead_Yes_No("\nDo you want to roll? y or n");
 			szUserResp.trim();
 			
 			char chResp = szUserResp.toLowerCase().charAt(0);
