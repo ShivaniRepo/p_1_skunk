@@ -109,12 +109,23 @@ public class Game
 			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
 			{
 				turn.printOverAllScore(players.get(iPlayer));
+				int iChips = players.get(iPlayer).getPlayerChipCount();
+				if( iChips <= 0 )
+				{
+					ui.printLine( "Negative chips count. Game is OVER." );
+					bContinue = true;
+					break;
+				}
+					
 			}
 			ui.printLine( "*********************************\n" );
 			
-			
 			//
-			// Gve option to continue the game.
+			//Check chips count
+			//
+
+			//
+			// Give option to continue the game.
 			//
 			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
 						
