@@ -11,11 +11,27 @@ public class FromUser implements SkunkInput
 	public String printLineRead(String szLine)
 	{
 		String strResponse = null;
+		int iTry=0;
+		boolean bDone = false;
 		
-		StdOut.println( szLine );
-		strResponse =  StdIn.readLine();
-		if( strResponse.trim().isEmpty() )
-			throw new IllegalArgumentException("Empty string enterd.");
+		do
+		{
+			StdOut.println( szLine );
+			strResponse =  StdIn.readLine();
+			
+			if( strResponse.trim().isEmpty() )
+			{
+				StdOut.println( "inValid entry, try again. Retry: " + (iTry+1) );
+				iTry++;
+				
+				if( iTry >= 3)
+					throw new IllegalArgumentException("Empty string enterd.");
+			}
+			else
+			{
+				bDone = true;
+			}
+		} while( !bDone && iTry<3 );
 		
 		return strResponse;
 	}

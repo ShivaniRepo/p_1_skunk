@@ -61,7 +61,7 @@ public class TestGame
 	{
 		Game newGame = new Game();
 		
-		int iReturn = newGame.getNumberOfPlayers(-1);
+		int iReturn = newGame.validateNumberOfPlayers(-1);
 		assertEquals(ERROR_INVALID_PLAYER_NUMBER, iReturn);
 	}
 
@@ -78,7 +78,7 @@ public class TestGame
 		
 		int iPlayerCount = rand.nextInt(max - min + 1) + min;
 		
-		int iReturn = newGame.getNumberOfPlayers( iPlayerCount );
+		int iReturn = newGame.validateNumberOfPlayers( iPlayerCount );
 		assertEquals( RETURN_OK, iReturn );
 	}
 	
