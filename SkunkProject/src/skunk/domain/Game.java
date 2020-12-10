@@ -3,8 +3,6 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
-import edu.princeton.cs.introcs.StdOut;
-
 
 public class Game 
 {
@@ -160,9 +158,15 @@ public class Game
 			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
 						
 			if( strTemp.trim().equalsIgnoreCase("y") )
+			{
 				bContinue = true;
+			}
 			else
+			{
 				ui.printLine( "invalid reponse. Exiting game." );
+				bContinue = false;
+				break;
+			}
 			
 			
 			iTurnCount++;
@@ -338,7 +342,6 @@ public class Game
 		ui.printLine( "*********************************" );
 		ui.printLine( "*********************************\n" );
 	}
-		
 
 	
 	//**********************************************************
