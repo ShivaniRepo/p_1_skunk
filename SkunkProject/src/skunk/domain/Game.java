@@ -1,10 +1,6 @@
 package skunk.domain;
 
 
-//import java.io.InputStreamReader;
-
-//import java.util.ArrayList;
-
 import java.util.ArrayList;
 
 import edu.princeton.cs.introcs.StdOut;
@@ -13,23 +9,32 @@ import edu.princeton.cs.introcs.StdOut;
 public class Game 
 {
 	
-	private boolean StartGame = false;
-	private boolean EndGame = false;
-
-	private int iNumOfPlayers;
-	private String[] NameOfPlayers;
-	public ArrayList<Player> players = new ArrayList<Player>();
-	
 	// Constants
 	private static final int CONSTANT_MAX_NUMBER_PLAYERS = 30;
 	private static final int ERROR_INVALID_PLAYER_NUMBER = -1;
+	private static final int PENALTY_OF_LOOSING = 5;
+	private static final int PENALTY_ZERO_SCORE = 10;
+	private static int TARGET_SCORE = 100;
+	
+	
+	private boolean StartGame = false;
+	private boolean EndGame = false;
+	
+	
+	private int iNumOfPlayers;
+	private int iWinnerIndex = -1;
+	private String[] NameOfPlayers;
+	public ArrayList<Player> players = new ArrayList<Player>();
+	
+
 	
 	// Class objects
 	private SkunkUI ui;
 	private Turn turn;
 	
 	public Player activePlayer;
-	//public int activePlayerIndex;
+	public Kitty kittyObj;
+	
 	
 	//**********************************************************
 	
@@ -54,7 +59,6 @@ public class Game
 		{
 			return "Skunk game has NOT started.";
 		}
-		
 	}
 	
 	//**********************************************************
@@ -70,6 +74,22 @@ public class Game
 	}
 
 	//**********************************************************
+
+	/*Each Game ends with one or more players scoring >=100 (needs to be done); 
+	 need clarification on how the game exits 
+
+	Followed by a final set of Turns giving all non-100 players a final chance to 
+	increase their score (needs to be done) 
+	
+	The first player to accumulate a total of 100 or more points can continue to 
+	score as many points over 100 as he believes is needed to win. When he decides to stop, 
+	his total score is the “goal.” Each succeeding player receives one more chance to 
+	better the goal and end the game.  
+	
+	The winner of each game collects all chips in "kitty" and in addition five chips 
+	from each losing player or 10 chips from any player without a score. 
+	12/8/2020: Keep this requirement within Player class.  */
+	
 	
 	public boolean run() 
 	{
@@ -100,7 +120,6 @@ public class Game
 		{
 			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
 			{
-				//activePlayerIndex = iPlayer;		
 				iStatus = turn.playTurn(players.get(iPlayer), iPlayer);
 				ui.printLine( "Turn is OVER." );
 			}
@@ -109,10 +128,13 @@ public class Game
 			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
 			{
 				turn.printOverAllScore(players.get(iPlayer));
+
 				int iChips = players.get(iPlayer).getPlayerChipCount();
 				if( iChips <= 0 )
 				{
-					ui.printLine( "Negative chips count. Game is OVER." );
+					ui.printLine( "Player: " + players.get(iPlayer).getPlayerName() + " zero or negative chips count. Taking this player out of the game." );
+					//this.players.remove(iPlayer);
+					
 					bContinue = true;
 					break;
 				}
@@ -121,9 +143,17 @@ public class Game
 			ui.printLine( "*********************************\n" );
 			
 			//
-			//Check chips count
+			//Check score and chips count
 			//
-
+			this.iWinnerIndex = find_MaxScoreIndex();
+			
+			if( this.iWinnerIndex > -1 )
+			{
+				update_ChipsFromKitty();
+			
+				update_ChipsFrom_OtherPlayers();
+			}
+			
 			//
 			// Give option to continue the game.
 			//
@@ -210,6 +240,108 @@ public class Game
 	}
 
 	//**********************************************************
+	//**********************************************************
+	
+	public int find_MaxScoreIndex()
+	{
+		int iCurrentScore = 0;
+		int iMaxScore = 0;
+		int iIndex = -1;
+		
+		for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
+		{
+			iCurrentScore = players.get(iPlayer).getPlayerScore();
+			
+			if( iCurrentScore >= TARGET_SCORE )
+			{
+				if( iCurrentScore > iMaxScore )
+				{
+					iMaxScore = iCurrentScore;
+					iIndex = iPlayer;
+				}
+			}
+		}
+		
+		return iIndex;
+	}
+	
+	//**********************************************************
+	//**********************************************************
+	
+	public void update_ChipsFromKitty()
+	{
+		int iCurrentScore = 0;
+		int iWinInd = this.iWinnerIndex;
+
+		//Do it only one time. Get flag to check if it is first time. If false it is first time
+		if( !players.get( iWinInd ).get_bUpdatedChips_FromKitty_Flag() )
+		{
+			iCurrentScore = players.get( iWinInd ).getPlayerScore();
+			
+			ui.printLine( players.get( iWinInd ).getPlayerName() + "'s is the WINNER with score: " + iCurrentScore );
+			
+			int iKittyChips = Kitty.get_iChips();
+			players.get( iWinInd ).setPlayerChipCount( players.get( iWinInd ).getPlayerChipCount() + iKittyChips );
+			Kitty.set_iChips( 0 );
+			
+			
+			//Set flag to true.
+			players.get( iWinInd ).set_bUpdatedChips_FromKitty_Flag(true);
+			
+			ui.printLine( players.get( iWinInd ).playerName + "'s gets chips from kitty: " +  iKittyChips );
+		}		
+	}
+	
+	//**********************************************************
+	//**********************************************************
+	
+	public void update_ChipsFrom_OtherPlayers()
+	{
+		int iWinInd = this.iWinnerIndex;
+		
+		//Do it only one time. Get flag to check if it is first time. If false it is first time
+		if( !players.get(iWinInd).get_bChipsFromPlayers_updated() )
+		{
+			//ui.printLine(players.get( iWinInd).getPlayerName() + "'s is the WINNER with score: " + players.get( iWinInd ).getPlayerScore() + " gets penalty chips from other players. " );
+			ui.printLine(players.get( iWinInd).getPlayerName() + "'s gets penalty chips from other players. " );
+					
+			for( int iPlayer=0; iPlayer < this.iNumOfPlayers; iPlayer++ )
+			{
+				if( iPlayer != iWinInd )
+				{
+					if( players.get(iPlayer).getPlayerScore() <= 0 )
+					{
+						players.get(iPlayer).update_PlayerChipCount( -PENALTY_ZERO_SCORE );
+						players.get(this.iWinnerIndex).update_PlayerChipCount( PENALTY_ZERO_SCORE );
+					}
+					else
+					{
+						players.get(iPlayer).update_PlayerChipCount( -PENALTY_OF_LOOSING );
+						players.get(this.iWinnerIndex).update_PlayerChipCount( PENALTY_OF_LOOSING );
+					}
+					
+					//Update the flag
+					players.get(iWinInd).set_bChipsFromPlayers_updated(true);
+				}
+			}
+			
+			ui.printLine(players.get(iWinInd).playerName + "'s Total Chip count: " + players.get(iWinInd).getPlayerChipCount() );
+			
+		}
+		
+		ui.printLine( "\n*********************************" );
+		ui.printLine( "********** WINNER:" + players.get(iWinInd).getPlayerName() + "**********" );
+		for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
+		{
+			turn.printOverAllScore(players.get(iPlayer));
+		}
+		ui.printLine( "*********************************" );
+		ui.printLine( "*********************************\n" );
+	}
+		
+
+	
+	//**********************************************************
 	// Return total players.
 	
 	public int getPlayers()
@@ -228,10 +360,21 @@ public class Game
 	}
 	
 	//**********************************************************
+	
+	// Method to remove one Player from Game. 
+	
+	public void removeOnePlayer(int iIndex) 	
+	{
+		players.remove(iIndex);
+	}
+	
+	//**********************************************************
+		
 	// Method to REMOVE all Players from Game. 
 	
 	public void removePlayers() 
 	{
 		players.clear();
 	}
+	//**********************************************************
 }

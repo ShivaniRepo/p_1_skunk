@@ -2,7 +2,7 @@ package skunk.domain;
 import edu.princeton.cs.introcs.StdOut;
 
 //**********************************************************
-// 	Version: 1.2 : Multiple players game is working.
+// 	Version: 1.3 : Multiple players game is working.
 //**********************************************************
 
 public class SkunkApp
