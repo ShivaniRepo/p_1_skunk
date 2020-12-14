@@ -19,6 +19,8 @@ public class Turn
 	public SkunkConstant sk;
 	public Player p;
 	
+	public Kitty kittyObj;
+	
 	//**********************************************************
 	
 	public Turn()
@@ -43,8 +45,10 @@ public class Turn
 		int iExitValue = 0;
 		
 		//Add name of active player
-		uiT.printLine("\nStarting Turn for " + activePlayer.playerName );
-		
+		uiT.printLine("\n*********************" );
+		uiT.printLine("*** Starting Turn for " + activePlayer.playerName );
+		uiT.printLine("*********************" );
+				
 		boolean bGameOver = false;
 		
 		//Sets up the counter for the ChipCount and playerScore
@@ -70,6 +74,9 @@ public class Turn
 					bGameOver = true;
 					
 					chipCount -= Constant.CONSTANT_PENALTY_DOUBLE_SKUNK_4;
+					
+					Kitty.add_iChips(Constant.CONSTANT_PENALTY_DOUBLE_SKUNK_4);
+					
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					activePlayer.setPlayerScore(0);
@@ -82,6 +89,9 @@ public class Turn
 					bGameOver = true;
 					
 					chipCount -= Constant.CONSTANT_PENALTY_SKUNK_DEUCE_2;
+					
+					Kitty.add_iChips(Constant.CONSTANT_PENALTY_SKUNK_DEUCE_2);
+					
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					break;
@@ -92,6 +102,9 @@ public class Turn
 					bGameOver = true;
 					
 					chipCount -= Constant.CONSTANT_PENALTY_REGULAR_SKUNK_1;
+					
+					Kitty.add_iChips(Constant.CONSTANT_PENALTY_REGULAR_SKUNK_1);
+					
 					activePlayer.setPlayerChipCount(chipCount);
 					
 					break;
@@ -104,6 +117,7 @@ public class Turn
 				
 				//Set the scores for this turn, adjust chips for penalty.
 				printScore( activePlayer );
+				
 				bWantToPlay = getRollChoice();
 			}
 			
@@ -126,7 +140,6 @@ public class Turn
 	}
 	
 	
-
 	//**********************************************************
 
 	private void printScore(Player aPlayer) 
@@ -137,7 +150,7 @@ public class Turn
 
 	//**********************************************************
 
-	private void printOverAllScore( Player aPlayer ) 
+	public void printOverAllScore( Player aPlayer ) 
 	{
 		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall score is: "+ aPlayer.getPlayerScore());
 		uiT.printLine("Player " + ( aPlayer.playerNum + 1) + ": "+ aPlayer.playerName + " overall chipcount is: " + aPlayer.getPlayerChipCount());
@@ -169,7 +182,6 @@ public class Turn
 
 	//**********************************************************
 	
-
 	public boolean getRollChoice()
 	{
 		boolean bUserResp = false;
