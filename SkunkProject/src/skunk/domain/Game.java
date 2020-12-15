@@ -183,7 +183,7 @@ public class Game
 			//
 			// Give option to continue the game.
 			//
-			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
+			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Turn?" );
 						
 			if( strTemp.trim().equalsIgnoreCase("y") )
 			{
