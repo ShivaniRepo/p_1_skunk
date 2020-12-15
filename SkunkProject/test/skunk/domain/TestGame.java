@@ -124,15 +124,13 @@ public class TestGame
 		
 	}
 	
-	@Test
-	public void testing_game_run()
-	{
-		Game newGame = new Game();
-		boolean bRun = newGame.run();
-		assertTrue( bRun );		
+//	@Test
+//	public void testing_game_run()
+//	{
+//		Game newGame = new Game();
+//		boolean bRun = newGame.run();
+//		assertTrue( bRun );		
+//	
+//	}
 	
-	}
-	
-	
-
 }
