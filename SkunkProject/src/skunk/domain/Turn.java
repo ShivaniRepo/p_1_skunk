@@ -44,6 +44,9 @@ public class Turn
 	{
 		int iExitValue = 0;
 		
+		if( !activePlayer.is_bIsPlayerInTheGame() )
+			return 0;
+		
 		//Add name of active player
 		uiT.printLine("\n*********************" );
 		uiT.printLine("*** Starting Turn for " + activePlayer.playerName );
@@ -136,6 +139,7 @@ public class Turn
 		uiT.printLine("\nGame ended for " + activePlayer.playerName + " because ***" + strExitReason );
 		printOverAllScore( activePlayer );
 		
+		uiT.printLine( "Turn is OVER." );
 		return iExitValue;
 	}
 	

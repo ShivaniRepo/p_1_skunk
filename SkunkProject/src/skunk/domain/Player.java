@@ -8,11 +8,10 @@ public class Player
 	int playerNum = 0;
 	boolean bChipsFromKitty_updated = false;
 	boolean bChipsFromPlayers_updated = false;
-	
-
-
 
 	String playerName = null;
+	boolean bIsPlayerInTheGame = true;
+	
 	
 	public Player() 
 	{
@@ -91,5 +90,16 @@ public class Player
 	public void set_bChipsFromPlayers_updated(boolean bFlag)
 	{
 		this.bChipsFromPlayers_updated = bFlag;
+	}
+	
+	
+	public boolean is_bIsPlayerInTheGame() 
+	{
+		return this.bIsPlayerInTheGame;
+	}
+
+	public void set_bIsPlayerInTheGame(boolean bIsPlayerInTheGame) 
+	{
+		this.bIsPlayerInTheGame = bIsPlayerInTheGame;
 	}
 }

@@ -130,9 +130,7 @@ public class TestGame
 		Game newGame = new Game();
 		boolean bRun = newGame.run();
 		assertTrue( bRun );		
-	
-	}
-	
 
-
+}
+	
 }
