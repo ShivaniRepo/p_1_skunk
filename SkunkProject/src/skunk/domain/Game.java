@@ -139,15 +139,26 @@ public class Game
 		
 		//For P1.2: Just one Player.
 		//One complete interactive turn of skunk with one human player.
-		boolean bContinue = false;
+		boolean bContinue = true;
 		int iTurnCount = 0;
 		
 		do
 		{
+			//Check how many numbers of players
+			//If only one player left, stop the game.
+			int iNumOfPlayer = get_Num_of_Players_in_the_game();
+			if( iNumOfPlayer < 2 )
+			{
+				ui.printLine( "Not enough Players in the game. Game OVER..." );
+				bContinue = false;
+				break;
+			}
+			
+			
 			for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
 			{
 				iStatus = turn.playTurn(players.get(iPlayer), iPlayer);
-				ui.printLine( "Turn is OVER." );
+				//ui.printLine( "Turn is OVER." );
 			}
 			
 			ui.printLine( "********** Turn: " + (iTurnCount+1) +"**********" );
@@ -156,10 +167,14 @@ public class Game
 				turn.printOverAllScore(players.get(iPlayer));
 
 				int iChips = players.get(iPlayer).getPlayerChipCount();
-				if( iChips <= 0 )
+				
+				//If player has zero or negative chips do not let them roll the dice.
+				//Their score will remain.
+				if( ( iChips <= 0 ) && players.get(iPlayer).is_bIsPlayerInTheGame() ) 
 				{
 					ui.printLine( "Player: " + players.get(iPlayer).getPlayerName() + " zero or negative chips count. Taking this player out of the game." );
-					//this.players.remove(iPlayer);
+
+					players.get(iPlayer).set_bIsPlayerInTheGame( false );
 					
 					bContinue = true;
 					break;
@@ -183,17 +198,26 @@ public class Game
 			//
 			// Give option to continue the game.
 			//
-			String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
-						
-			if( strTemp.trim().equalsIgnoreCase("y") )
+			if( bContinue )
 			{
-				bContinue = true;
-			}
-			else
-			{
-				ui.printLine( "invalid reponse. Exiting game." );
-				bContinue = false;
-				break;
+				String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
+							
+				if( strTemp.trim().equalsIgnoreCase("y") )
+				{
+					bContinue = true;
+				}
+				else if( strTemp.trim().equalsIgnoreCase("n") )
+				{
+					ui.printLine( "User entered No. Exiting game." );
+					bContinue = false;
+					break;
+				}
+				else
+				{
+					ui.printLine( "invalid reponse. Exiting game." );
+					bContinue = false;
+					break;
+				}
 			}
 			
 			
@@ -206,6 +230,22 @@ public class Game
 		bStatus = (iStatus == 0) ? false: true; 
 			
 		return bStatus;
+	}
+
+
+	//**********************************************************
+	
+	private int get_Num_of_Players_in_the_game() 
+	{
+		int iPlayerCount = 0;
+		
+		for( int iPlayer=0; iPlayer<this.iNumOfPlayers; iPlayer++ )
+		{
+			if( players.get(iPlayer).is_bIsPlayerInTheGame() )
+				iPlayerCount++;
+		}
+		
+		return iPlayerCount;
 	}
 	
 	//**********************************************************
