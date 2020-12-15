@@ -200,7 +200,7 @@ public class Game
 			//
 			if( bContinue )
 			{
-				String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Turn?" );
+				String strTemp = ui.printLineRead_Yes_No("Do you want to play one more Game?" );
 							
 				if( strTemp.trim().equalsIgnoreCase("y") )
 				{
